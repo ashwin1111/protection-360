@@ -17,16 +17,16 @@ export class DashboardPage implements OnInit {
     private authService: AuthenticateService
   ) {}
  
-  ngOnInit(){
+  ngOnInit() {
     
-    if(this.authService.userDetails()){
+    if (this.authService.userDetails()) {
       this.userEmail = this.authService.userDetails().email;
-    }else{
+    } else {
       this.navCtrl.navigateBack('');
     }
   }
  
-  logout(){
+  logout() {
     this.authService.logoutUser()
     .then(res => {
       console.log(res);

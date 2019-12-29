@@ -8,13 +8,12 @@ import { NavController } from '@ionic/angular';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
- 
- 
+
+export class RegisterPage implements OnInit { 
   validations_form: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
- 
+
   validation_messages = {
    'email': [
      { type: 'required', message: 'Email is required.' },
@@ -25,14 +24,14 @@ export class RegisterPage implements OnInit {
      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
    ]
  };
- 
+
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder
   ) {}
- 
-  ngOnInit(){
+
+  ngOnInit() {
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -44,8 +43,8 @@ export class RegisterPage implements OnInit {
       ])),
     });
   }
- 
-  tryRegister(value){
+
+  tryRegister (value){
     this.authService.registerUser(value)
      .then(res => {
        console.log(res);
@@ -57,10 +56,8 @@ export class RegisterPage implements OnInit {
        this.successMessage = "";
      })
   }
- 
-  goLoginPage(){
+
+  goLoginPage() {
     this.navCtrl.navigateBack('');
-  }
- 
- 
+  } 
 }
