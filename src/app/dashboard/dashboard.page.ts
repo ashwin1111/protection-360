@@ -36,4 +36,26 @@ export class DashboardPage implements OnInit {
       console.log(error);
     })
   }
+
+  showright(){
+      document.getElementById('rightbar').style.right='0px';
+  }
+
+  showleft(){
+    if(document.getElementById('leftbar').style.left=="-270px"){
+      document.getElementById('leftbar').style.left="0px";
+    }else{
+      document.getElementById('leftbar').style.left="-270px";
+    }
+  }
+
+  hideleft(){
+    if(document.getElementById('leftbar').style.left=="0px"){
+      document.getElementById('leftbar').style.left="-270px";
+    }
+
+    if(document.getElementById('rightbar').style.right=="0px"){
+      document.getElementById('rightbar').style.right="-270px";
+    }
+  }
 }
