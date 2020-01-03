@@ -47,7 +47,8 @@ export class RegisterPage implements OnInit {
   tryRegister (value){
     this.authService.registerUser(value)
      .then(res => {
-       console.log(res);
+       //console.log(res.user.uid);
+       localStorage.setItem("uid",res.user.uid);
        this.errorMessage = "";
        this.successMessage = "Your account has been created. Please log in.";
      }, err => {

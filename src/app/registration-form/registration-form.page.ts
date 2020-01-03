@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { detailsservice } from '../shared/details.service';
 
 @Component({
   selector: 'app-registration-form',
@@ -10,22 +12,27 @@ export class RegistrationFormPage implements OnInit {
   registration_form: FormGroup;
   
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private aptservice:detailsservice
+    ) { }
 
   ngOnInit() {
     this.registration_form = this.formBuilder.group({
-      name: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      fatherName: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      occupation: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
+      name:[''],
+    mobile:[''],
+    address:[''],
+    dob:[''],
+    gender:[''],
+    occupation:[''],
+    fathername:[''],
+    fathernumber:[''],
+    fatheraddress:[''],
+    fatheremail:[''],
+    gname:[''],
+    gnumber:[''],
+    gaddress:[''],
+    gemail:['']
     });
   }
 
@@ -52,6 +59,16 @@ hideleft(){
 }
 
   register (formValues) {
+    if(!this.registration_form.valid){
+        return false;
+    }
+    else{
+        this.aptservice.createBooking(this.registration_form.value).then(res=>{
+          console.log(res);
+          this.registration_form.reset();
+          this.router.navigate(['/dashboard']);
+        }).catch(error=> console.log(error));
+    }
     console.log('akjsgs',formValues)
   }
 
