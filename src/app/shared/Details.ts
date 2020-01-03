@@ -1,17 +1,17 @@
 export class Details {
     name:string;
-    mobile:number;
-    address:string;
-    dob:string;
+    mobile_number:number;
+    current_address:string;
+    date_of_birth:string;
     gender:string;
     occupation:string;
-    fathername:string;
-    fathernumber:number;
-    fatheraddress:string;
-    fatheremail:string;
-    gname:string;
-    gnumber:number;
-    gaddress:string;
-    gemail:string;
+    father_name:string;
+    father_mobile_number:number;
+    father_current_address:string;
+    father_email_address:string;
+    guardian_name:string;
+    guardian_mobile_number:number;
+    guardian_email_address:string;
+    guardian_current_address:string;
 
 }

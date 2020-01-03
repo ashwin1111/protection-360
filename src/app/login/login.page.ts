@@ -18,7 +18,11 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    if (localStorage.getItem('uid')) {
+      this.navCtrl.navigateForward('/dashboard');
+    }
+  }
 
   ngOnInit() {
     this.validations_form = this.formBuilder.group({
@@ -47,7 +51,8 @@ export class LoginPage implements OnInit {
   loginUser (value) {
     this.authService.loginUser(value)
     .then(res => {
-      console.log(res);
+      console.log('logged in successfully with user details:', res);
+      localStorage.setItem("uid",res.user.uid);
       this.errorMessage = "";
       this.navCtrl.navigateForward('/dashboard');
     }, err => {

@@ -15,15 +15,13 @@ export class DashboardPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService
-  ) {}
+  ) {
+    if (!localStorage.getItem('uid')) {
+      this.navCtrl.navigateForward('');
+    }
+  }
  
   ngOnInit() {
-    
-    if (this.authService.userDetails()) {
-      this.userEmail = this.authService.userDetails().email;
-    } else {
-      this.navCtrl.navigateBack('');
-    }
   }
  
   logout() {

@@ -12,29 +12,14 @@ export class detailsservice {
   bookingRef: AngularFireObject<any>;
 
   constructor(private db: AngularFireDatabase) {
-    var key = localStorage.getItem('uid');
-    this.bookingListRef=db.list('users/'+key);
+    this.bookingListRef=db.list('users/');
    }
 
   // Create
   createBooking(apt: Details) {
     return new Promise<any>((resolve,reject)=>{
-      this.bookingListRef.push({
-      name: apt.name,
-      mobile: apt.mobile,
-      email: apt.address,
-      dob:apt.dob,
-      gender:apt.gender,
-      occupation:apt.occupation,
-      fathername:apt.fathername,
-      fathernumber:apt.fathernumber,
-      fatheraddress:apt.fatheraddress,
-      fatheremail:apt.fatheremail,
-      gname:apt.gname,
-      gnumber:apt.gnumber,
-      gaddress:apt.gaddress,
-      gemail: apt.gemail
-    }).then(
+      var key = localStorage.getItem('uid');
+      this.bookingListRef.update(key,apt).then(
       res=>resolve(res),
       err=>reject(err))
     })
