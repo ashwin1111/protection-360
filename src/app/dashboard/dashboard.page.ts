@@ -25,9 +25,11 @@ export class DashboardPage implements OnInit {
   }
  
   logout() {
+    console.log('logout')
     this.authService.logoutUser()
     .then(res => {
       console.log(res);
+      localStorage.removeItem('uid');
       this.navCtrl.navigateBack('');
     })
     .catch(error => {
@@ -55,5 +57,9 @@ export class DashboardPage implements OnInit {
     if(document.getElementById('rightbar').style.right=="0px"){
       document.getElementById('rightbar').style.right="-270px";
     }
+  }
+
+  navigateToRegistration() {
+    this.navCtrl.navigateForward('/registration-form');
   }
 }

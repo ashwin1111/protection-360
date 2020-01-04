@@ -104,6 +104,7 @@ hideleft(){
   register (formValues) {
     console.log('akjsgs',formValues)
     this.aptservice.createBooking(this.registration_form.value).then(res=>{
+      localStorage.setItem('registrationDone', 'yes');
       console.log(res);
       this.registration_form.reset();
       this.router.navigate(['/dashboard']);
