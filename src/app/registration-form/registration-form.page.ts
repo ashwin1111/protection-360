@@ -15,9 +15,36 @@ export class RegistrationFormPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private aptservice:detailsservice
-    ) { }
+    ) { 
+      
+    }
 
   ngOnInit() {
+    var isMobile = {
+      Android: function() {
+          return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function() {
+          return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function() {
+          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+  };
+    if( isMobile.any() ){
+      document.getElementById('leftbar1').style.left="-270px";
+    }else{
+      document.getElementById('leftbar1').style.left="0px";
+    }
     this.registration_form = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required,
@@ -84,21 +111,21 @@ export class RegistrationFormPage implements OnInit {
 }
 
 showleft(){
-  if(document.getElementById('leftbar').style.left=="-270px"){
-    document.getElementById('leftbar').style.left="0px";
+  if(document.getElementById('leftbar1').style.left=="-270px"){
+    document.getElementById('leftbar1').style.left="0px";
   }else{
-    document.getElementById('leftbar').style.left="-270px";
+    document.getElementById('leftbar1').style.left="-270px";
   }
 }
 
 hideleft(){
-  if(document.getElementById('leftbar').style.left=="0px"){
-    document.getElementById('leftbar').style.left="-270px";
+  if(document.getElementById('leftbar1').style.left=="0px"){
+    document.getElementById('leftbar1').style.left="-270px";
   }
 
-  if(document.getElementById('rightbar').style.right=="0px"){
-    document.getElementById('rightbar').style.right="-270px";
-  }
+  // if(document.getElementById('rightbar').style.right=="0px"){
+  //   document.getElementById('rightbar').style.right="-270px";
+  // }
 }
 
   register (formValues) {

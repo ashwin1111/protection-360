@@ -22,6 +22,31 @@ export class DashboardPage implements OnInit {
   }
  
   ngOnInit() {
+    var isMobile = {
+      Android: function() {
+          return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function() {
+          return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function() {
+          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+  };
+    if( isMobile.any() ){
+      document.getElementById('leftbar').style.left="-270px";
+    }else{
+      document.getElementById('leftbar').style.left="0px";
+    }
   }
  
   logout() {
@@ -54,9 +79,9 @@ export class DashboardPage implements OnInit {
       document.getElementById('leftbar').style.left="-270px";
     }
 
-    if(document.getElementById('rightbar').style.right=="0px"){
-      document.getElementById('rightbar').style.right="-270px";
-    }
+    // if(document.getElementById('rightbar').style.right=="0px"){
+    //   document.getElementById('rightbar').style.right="-270px";
+    // }
   }
 
   navigateToRegistration() {
