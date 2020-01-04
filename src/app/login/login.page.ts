@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +19,19 @@ export class LoginPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public afAuth: AngularFireAuth
   ) {
     if (localStorage.getItem('uid')) {
-      this.navCtrl.navigateForward('/dashboard');
+      this.afAuth.authState.subscribe(user => {
+        if(user.emailVerified){
+          this.navCtrl.navigateForward('/dashboard');
+        }
+        else{
+          this.errorMessage = "Your Email not verified yet";
+        }
+      });
+      
     }
   }
 
@@ -54,7 +65,14 @@ export class LoginPage implements OnInit {
       console.log('logged in successfully with user details:', res);
       localStorage.setItem("uid",res.user.uid);
       this.errorMessage = "";
-      this.navCtrl.navigateForward('/dashboard');
+      this.afAuth.authState.subscribe(user => {
+        if(user.emailVerified){
+          this.navCtrl.navigateForward('/dashboard');
+        }else{
+          this.errorMessage = "Your Email not verified yet";
+        }
+      })
+      //this.navCtrl.navigateForward('/dashboard');
     }, err => {
       this.errorMessage = err.message;
     })
