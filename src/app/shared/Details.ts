@@ -15,3 +15,7 @@ export class Details {
     guardian_current_address:string;
 
 }
+
+export class profile{
+    img_url:string;
+}

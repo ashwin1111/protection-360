@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AngularFireAuth } from "@angular/fire/auth";
-import { userInfo } from 'os';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
 
   validations_form: FormGroup;
   errorMessage: string = '';
-
+  profile_url:string;
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
@@ -62,16 +62,30 @@ export class LoginPage implements OnInit {
   loginUser (value) {
     this.authService.loginUser(value)
     .then(res => {
-      console.log('logged in successfully with user details:', res);
-      localStorage.setItem("uid",res.user.uid);
-      this.errorMessage = "";
-      this.afAuth.authState.subscribe(user => {
-        if(user.emailVerified){
-          this.navCtrl.navigateForward('/dashboard');
-        }else{
-          this.errorMessage = "Your Email not verified yet";
+    
+      var ref= firebase.database().ref('users/'+res.user.uid);
+      ref.once('value',res1=>{
+        if(res1.hasChild('img_url')){
+          localStorage.setItem('profile_url',res1.val().img_url);
+          this.profile_url=res1.val().img_url;
         }
-      })
+        console.log('logged in successfully with user details:', res);
+        localStorage.setItem("uid",res.user.uid);
+        this.errorMessage = "";
+        this.afAuth.authState.subscribe(user => {
+          if(user.emailVerified){
+            if (localStorage.getItem('registrationDone')) {
+              this.navCtrl.navigateForward('/dashboard');        
+            } 
+            else {
+              this.navCtrl.navigateForward('/registration-form');        
+            }
+          }else{
+            this.errorMessage = "Your Email not verified yet";
+          }
+        })
+      });
+     
       //this.navCtrl.navigateForward('/dashboard');
     }, err => {
       this.errorMessage = err.message;

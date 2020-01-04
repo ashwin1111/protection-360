@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { detailsservice } from '../shared/details.service';
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registration-form',
@@ -10,12 +11,23 @@ import { detailsservice } from '../shared/details.service';
 })
 export class RegistrationFormPage implements OnInit {
   registration_form: FormGroup;
-  
+  profile_url:string;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
+    private navCtrl: NavController,
     private aptservice:detailsservice
-    ) { }
+    ) {  if (!localStorage.getItem('uid')) {
+      this.navCtrl.navigateForward('');
+    }else{
+      if(localStorage.getItem('profile_url')){
+        this.profile_url=localStorage.getItem('profile_url');
+      }
+      else{
+        this.profile_url="../../assets/ubold/layouts/light/assets/images/man.png";
+      }
+    }
+  }
 
   ngOnInit() {
     this.registration_form = this.formBuilder.group({
@@ -103,7 +115,9 @@ hideleft(){
 
   register (formValues) {
     console.log('akjsgs',formValues)
+    console.log(this.registration_form.value);
     this.aptservice.createBooking(this.registration_form.value).then(res=>{
+      localStorage.setItem('registrationDone', 'yes');
       console.log(res);
       this.registration_form.reset();
       this.router.navigate(['/dashboard']);

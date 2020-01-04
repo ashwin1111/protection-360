@@ -14,6 +14,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { Camera } from '@ionic-native/camera/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { HttpClientModule } from '@angular/common/http';
 
 import * as firebase from 'firebase';
  
@@ -29,9 +32,12 @@ firebase.initializeApp(environment.firebase);
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule
   ],
   providers: [
+    File,
+    Camera,
     StatusBar,
     SplashScreen,
     AuthenticateService,
