@@ -9,9 +9,14 @@ const routes: Routes = [
   {
     path: 'registration-form',
     loadChildren: () => import('./registration-form/registration-form.module').then( m => m.RegistrationFormPageModule)
-  },  {
+  },
+  {
     path: 'my-profile',
     loadChildren: () => import('./my-profile/my-profile.module').then( m => m.MyProfilePageModule)
+  },
+  {
+    path: 'warning',
+    loadChildren: () => import('./warning/warning.module').then( m => m.WarningPageModule)
   }
 
 
