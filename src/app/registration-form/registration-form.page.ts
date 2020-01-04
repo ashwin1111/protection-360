@@ -21,15 +21,12 @@ export class RegistrationFormPage implements OnInit {
     this.registration_form = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('/^[A-Za-z]+$/')
       ])),
-       email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
+       //email: (['']),
        mobile_number: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('/^[6-9]\d{9}$/')
       ])),
        current_address: new FormControl('', Validators.compose([
         Validators.required,
@@ -45,11 +42,11 @@ export class RegistrationFormPage implements OnInit {
       ])),
       father_name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('/^[A-Za-z]+$/')
       ])),
       father_mobile_number: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('/^[6-9]\d{9}$/')
       ])),
       father_email_address: new FormControl('', Validators.compose([
         Validators.required,
@@ -61,11 +58,11 @@ export class RegistrationFormPage implements OnInit {
       ])),
       guardian_name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('/^[A-Za-z]+$/')
       ])),
       guardian_mobile_number: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('/^[6-9]\d{9}$/')
       ])),
       guardian_email_address: new FormControl('', Validators.compose([
         Validators.required,
@@ -99,6 +96,10 @@ hideleft(){
   if(document.getElementById('rightbar').style.right=="0px"){
     document.getElementById('rightbar').style.right="-270px";
   }
+}
+
+gender(value) {
+  console.log('genderrr', value)
 }
 
   register (formValues) {
