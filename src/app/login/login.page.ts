@@ -54,7 +54,11 @@ export class LoginPage implements OnInit {
       console.log('logged in successfully with user details:', res);
       localStorage.setItem("uid",res.user.uid);
       this.errorMessage = "";
-      this.navCtrl.navigateForward('/dashboard');
+      if (localStorage.getItem('registrationDone')) {
+        this.navCtrl.navigateForward('/dashboard');        
+      } else {
+        this.navCtrl.navigateForward('/registration-form');        
+      }
     }, err => {
       this.errorMessage = err.message;
     })
