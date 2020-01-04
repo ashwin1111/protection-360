@@ -18,6 +18,9 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+
 import * as firebase from 'firebase';
  
 firebase.initializeApp(environment.firebase);
@@ -40,6 +43,8 @@ firebase.initializeApp(environment.firebase);
     Camera,
     StatusBar,
     SplashScreen,
+    Geolocation,
+    NativeGeocoder,
     AuthenticateService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
