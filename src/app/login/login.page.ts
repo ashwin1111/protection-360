@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from 'firebase';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -20,22 +21,26 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public spinner: NgxSpinnerService
   ) {
-    if (localStorage.getItem('uid')) {
-      this.afAuth.authState.subscribe(user => {
-        if(user.emailVerified){
-          this.navCtrl.navigateForward('/dashboard');
-        }
-        else{
-          this.errorMessage = "Your Email not verified yet";
-        }
-      });
-      
-    }
   }
 
   ngOnInit() {
+    this.spinner.show()
+    setTimeout(() => {
+      if (localStorage.getItem('uid')) {
+        this.afAuth.authState.subscribe(user => {
+          if(user.emailVerified){
+            this.navCtrl.navigateForward('/dashboard');
+          }
+          else{
+            this.spinner.hide();
+            this.errorMessage = "Your Email not verified yet";
+          }
+        });
+      }
+    }, 700);
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
