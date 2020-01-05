@@ -17,16 +17,56 @@ export class RegistrationFormPage implements OnInit {
     private aptservice:detailsservice
     ) { }
 
+   validation_messages = {
+    'name': [
+      { type: 'required', message: 'Name is required.' },
+      { type: 'pattern', message: 'Please enter a valid name.' }
+    ],
+    'mobile_number': [
+      { type: 'required', message: 'Mobile Number is required.' },
+      { type: 'pattern', message: 'Please enter a valid mobile number.' }
+    ],
+    'current_address' :[
+      { type: 'required', message: 'Mobile Number is required.' },
+      { type: 'pattern', message: 'Please enter a valid mobile number.' }
+    ],
+    'father_name': [
+      { type: 'required', message: 'Name is required.' },
+      { type: 'pattern', message: 'Please enter a valid name .' }
+    ],
+    'father_mobile_number': [
+      { type: 'required', message: 'Mobile number is required.' },
+      { type: 'pattern', message: 'Please enter a valid mobile number.' }
+    ],
+    'father_email_address' :[
+      { type: 'required', message: 'Email address is required.' },
+      { type: 'pattern', message: 'Please enter a valid  email address.' }
+    ],
+    'guardian_name': [
+      { type: 'required', message: 'Email address is required.' },
+      { type: 'pattern', message: 'Please enter a valid email address.' }
+    ],
+    'guardian_mobile_number' :[
+      { type: 'required', message: 'Mobile number is required.' },
+      { type: 'pattern', message: 'Please enter a valid mobile number.' }
+    ],
+    'guardian_email_address' :[
+      { type: 'required', message: 'Email address is required.' },
+      { type: 'pattern', message: 'Please enter a valid email address.' }
+    ]
+
+  };
+
   ngOnInit() {
     this.registration_form = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('/^[A-Za-z]+$/')
+        Validators.pattern('^[a-zA-Z]+(?:-[a-zA-Z]+)*$')
       ])),
-       //email: (['']),
+       email: (['']),
        mobile_number: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('/^[6-9]\d{9}$/')
+        Validators.pattern('^([0|\+[0-9]{1,10})$')
       ])),
        current_address: new FormControl('', Validators.compose([
         Validators.required,
@@ -42,11 +82,11 @@ export class RegistrationFormPage implements OnInit {
       ])),
       father_name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('/^[A-Za-z]+$/')
+        Validators.pattern('^[A-Za-z]+$')
       ])),
       father_mobile_number: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('/^[6-9]\d{9}$/')
+        Validators.pattern('^([0|\+[0-9]{1,10})$')
       ])),
       father_email_address: new FormControl('', Validators.compose([
         Validators.required,
@@ -58,11 +98,11 @@ export class RegistrationFormPage implements OnInit {
       ])),
       guardian_name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('/^[A-Za-z]+$/')
+        Validators.pattern('^[a-zA-Z]+(?:-[a-zA-Z]+)*$')
       ])),
       guardian_mobile_number: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('/^[6-9]\d{9}$/')
+        Validators.pattern('^([0|\+[0-9]{1,10})$')
       ])),
       guardian_email_address: new FormControl('', Validators.compose([
         Validators.required,
@@ -74,6 +114,7 @@ export class RegistrationFormPage implements OnInit {
       ])),
       gender:['']
     });
+    console.log(this.registration_form)
   }
 
   showright(){
@@ -111,4 +152,8 @@ gender(value) {
       this.router.navigate(['/dashboard']);
     }).catch(error=> console.log(error));
     }
+     registration(){
+    console.log(this.registration_form);
   }
+  }
+
