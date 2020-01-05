@@ -41,6 +41,7 @@ export class LoginPage implements OnInit {
         });
       }
     }, 700);
+    this.spinner.hide();
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
