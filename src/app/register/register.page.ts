@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
 import { NavController } from '@ionic/angular';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from "@angular/router";
  
 @Component({
   selector: 'app-register',
@@ -28,7 +30,9 @@ export class RegisterPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public afAuth: AngularFireAuth,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -47,6 +51,7 @@ export class RegisterPage implements OnInit {
   tryRegister (value){
     this.authService.registerUser(value)
      .then(res => {
+      this.SendVerificationMail();
        this.errorMessage = "";
        this.successMessage = "Your account has been created. Please log in.";
      }, err => {
@@ -54,6 +59,17 @@ export class RegisterPage implements OnInit {
        this.errorMessage = err.message;
        this.successMessage = "";
      })
+  }
+
+  SendVerificationMail() {
+    this.afAuth.authState.subscribe(user => {
+      // console.log(user);
+      user.sendEmailVerification()
+      .then(() => {
+        console.log('email sent');
+        this.router.navigate(['']);
+      })
+    });
   }
 
   goLoginPage() {

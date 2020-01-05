@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { detailsservice } from '../shared/details.service';
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registration-form',
@@ -10,12 +11,23 @@ import { detailsservice } from '../shared/details.service';
 })
 export class RegistrationFormPage implements OnInit {
   registration_form: FormGroup;
-  
+  profile_url:string;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
+    private navCtrl: NavController,
     private aptservice:detailsservice
-    ) { }
+    ) {  if (!localStorage.getItem('uid')) {
+      this.navCtrl.navigateForward('');
+    }else{
+      if(localStorage.getItem('profile_url')){
+        this.profile_url=localStorage.getItem('profile_url');
+      }
+      else{
+        this.profile_url="../../assets/ubold/layouts/light/assets/images/man.png";
+      }
+    }
+  }
 
   //  validation_messages = {
   //   'name': [
@@ -106,6 +118,31 @@ export class RegistrationFormPage implements OnInit {
   }
 
   ngOnInit() {
+    var isMobile = {
+      Android: function() {
+          return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function() {
+          return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function() {
+          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+  };
+    if( isMobile.any() ){
+      document.getElementById('leftbar1').style.left="-270px";
+    }else{
+      document.getElementById('leftbar1').style.left="0px";
+    } 
   //   this.registration_form = this.formBuilder.group({
   //     name: new FormControl('', Validators.compose([
   //       Validators.required,
@@ -167,17 +204,16 @@ export class RegistrationFormPage implements OnInit {
   //     ])),
   //   });
   //   console.log(this.registration_form)
-  this.registration_form = this.formBuilder.group({
-       name: new FormControl('', Validators.compose([
+    this.registration_form = this.formBuilder.group({
+      name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z]+(?:-[a-zA-Z]+)*$')
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
       email: [''],
      mobile_number: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('[0-9]{10}')
       ])),
-
        current_address: [''],
        occupation:new FormControl('', Validators.compose([
         Validators.required,
@@ -221,21 +257,21 @@ export class RegistrationFormPage implements OnInit {
 }
 
 showleft(){
-  if(document.getElementById('leftbar').style.left=="-270px"){
-    document.getElementById('leftbar').style.left="0px";
+  if(document.getElementById('leftbar1').style.left=="-270px"){
+    document.getElementById('leftbar1').style.left="0px";
   }else{
-    document.getElementById('leftbar').style.left="-270px";
+    document.getElementById('leftbar1').style.left="-270px";
   }
 }
 
 hideleft(){
-  if(document.getElementById('leftbar').style.left=="0px"){
-    document.getElementById('leftbar').style.left="-270px";
+  if(document.getElementById('leftbar1').style.left=="0px"){
+    document.getElementById('leftbar1').style.left="-270px";
   }
 
-  if(document.getElementById('rightbar').style.right=="0px"){
-    document.getElementById('rightbar').style.right="-270px";
-  }
+  // if(document.getElementById('rightbar').style.right=="0px"){
+  //   document.getElementById('rightbar').style.right="-270px";
+  // }
 }
 
 gender(value) {
@@ -244,6 +280,7 @@ gender(value) {
 
   register (formValues) {
     console.log('akjsgs',formValues)
+    console.log(this.registration_form.value);
     this.aptservice.createBooking(this.registration_form.value).then(res=>{
       localStorage.setItem('registrationDone', 'yes');
       console.log(res);

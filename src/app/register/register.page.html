@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Register</ion-title>
   </ion-toolbar>
@@ -37,4 +37,71 @@
     <label class="success-message">{{successMessage}}</label>
   </form>
   <p class="go-to-login">Already have an account? <a (click)="goLoginPage()">Try to Log In.</a></p>
-</ion-content>
+</ion-content> -->
+
+
+<div id="wrapper">
+  <div style="margin-left: auto;" class="content-page">
+      <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid">
+              <!-- start page title -->
+              <div class="row justify-content-center">
+                  <div class="col-md-8 col-lg-6 col-xl-5">
+                      <div class="card bg-pattern">
+                          <div class="card-body p-4">
+                              <div class="text-center w-75 m-auto">
+                                      <span><img src="assets/icon/favicon.png" alt="" height="22"></span>
+                                  <p class="text-muted mb-4 mt-3">Don't have an account? Create your account, it takes less than a minute</p>
+                              </div>
+                              <form [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
+                                  <div class="form-group">
+                                      <label for="emailaddress">Email address</label>
+                                      <input class="form-control" type="email" id="emailaddress" formControlName="email" required="" placeholder="Enter your email">
+                                      <div class="validation-errors">
+                                        <ng-container *ngFor="let validation of validation_messages.email">
+                                          <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                                            {{ validation.message }}
+                                          </div>
+                                        </ng-container>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="password">Password</label>
+                                      <input class="form-control" type="password" required="" id="password" formControlName="password" placeholder="Enter your password">
+                                      <div class="validation-errors">
+                                        <ng-container *ngFor="let validation of validation_messages.password">
+                                          <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                                            {{ validation.message }}
+                                          </div>
+                                        </ng-container>
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group mb-0 text-center">
+                                      <button class="btn btn-success btn-block" type="submit" [disabled]="!validations_form.valid"> Sign Up </button>
+                                      <br>
+                                      <label class="error-message">{{errorMessage}}</label>
+                                      <label class="success-message">{{successMessage}}</label>
+                                  </div>
+                              </form>
+                          </div> <!-- end card-body -->
+                      </div>
+                      <!-- end card -->
+                      <div class="row mt-3">
+                          <div class="col-12 text-center">
+                              <p >Already have account?  <a (click)="goLoginPage()" class="ml-1"><b>Sign In</b></a></p>
+                          </div> <!-- end col -->
+                      </div>
+                      <!-- end row -->
+                  </div> <!-- end col -->
+              </div>    
+          </div> <!-- container -->
+      </div> <!-- content -->
+      <!-- Footer Start -->
+      <!-- end Footer -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Page content -->
+  <!-- ============================================================== -->
+</div>

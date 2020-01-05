@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-profile',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyProfilePage implements OnInit {
 
-  constructor() { }
+  profile_url:string;
+  constructor(private navCtrl: NavController) { 
+    this.profile_url=localStorage.getItem('profile_url');
+  }
 
   ngOnInit() {
+  }
+
+  goToRegisterForm() {
+    this.navCtrl.navigateForward('/registration-form');
   }
 
 }
