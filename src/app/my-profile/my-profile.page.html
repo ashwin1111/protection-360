@@ -183,93 +183,65 @@
                                         </a>
                                     </form>
                                 </div>
-                                <h4 class="page-title" (click)="navigateToRegistration()">Registration Page</h4>
+                                <!-- <h4 class="page-title" (click)="navigateToRegistration()">Registration Page</h4> -->
                             </div>
                         </div>
                     </div>
                     <!-- end page title -->
-                    <div class="row">
-                        <div class="col-md-6 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
-                                            <i class="fe-heart font-22 avatar-title text-primary"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-right">
-                                            <h3 class="text-dark mt-1">$<span data-plugin="counterup">5847</span></h3>
-                                            <p class="text-muted mb-1 text-truncate">Total Revenue</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row-->
-                            </div>
-                            <!-- end widget-rounded-circle-->
-                        </div>
-                        <!-- end col-->
-                        <div class="col-md-6 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="avatar-lg rounded-circle bg-soft-success border-success border">
-                                            <i class="fe-shopping-cart font-22 avatar-title text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-right">
-                                            <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
-                                            <p class="text-muted mb-1 text-truncate">Today's Sales</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row-->
-                            </div>
-                            <!-- end widget-rounded-circle-->
-                        </div>
-                        <!-- end col-->
-                        <div class="col-md-6 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                                            <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-right">
-                                            <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
-                                            <p class="text-muted mb-1 text-truncate">Conversion</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row-->
-                            </div>
-                            <!-- end widget-rounded-circle-->
-                        </div>
-                        <!-- end col-->
-                        <div class="col-md-6 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
-                                            <i class="fe-eye font-22 avatar-title text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-right">
-                                            <h3 class="text-dark mt-1"><span data-plugin="counterup">78.41</span>k</h3>
-                                            <p class="text-muted mb-1 text-truncate">Today's Visits</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row-->
-                            </div>
-                            <!-- end widget-rounded-circle-->
-                        </div>
-                        <!-- end col-->
-                    </div>
+                    <div id="wrapper">
+                      <div style="margin-left: auto;" class="content-page">
+                          <div class="content">
+                              <!-- Start Content-->
+                              <div class="container-fluid">
+                                  <!-- start page title -->
+                                  <div class="row">
+                                      <div class="card-box text-center" style="
+          margin: 0 auto;
+          ">
+                                          <img src={{profile_url}} class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                                          <h4 class="mb-0">Geneva McKnight</h4>
+                                          <p class="text-muted"></p>
+                                          <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Edit Profile</button>
+                                          <!-- <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Message</button> -->
+                                          <div class="text-left mt-3">
+                                              <h4 class="font-13 text-uppercase">Details :</h4>
+                                              <!-- <p class="text-muted font-13 mb-3">
+                                                  Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the
+                                                  1500s, when an unknown printer took a galley of type.
+                                              </p> -->
+                                              <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">Geneva
+                                                      D. McKnight</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Mobile Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Current Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Date of Birth :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Gender :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Occupation :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Name :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Mobile Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Email Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Current Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Name :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Mobile Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Email Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Current Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Email Preference:</strong> <span class="ml-2 ">user@email.domain</span></p>
+
+                                          </div>
+                                      </div> <!-- end card-box -->
+                                       <!-- end card-box-->
+                                   <!-- end col-->
+                                   <!-- end col -->
+                              </div>
+                              </div> <!-- container -->
+                          </div> <!-- content -->
+                          <!-- Footer Start -->
+                          <!-- end Footer -->
+                      </div>
+                      <!-- ============================================================== -->
+                      <!-- End Page content -->
+                      <!-- ============================================================== -->
+                  </div>
                     <!-- end row-->
 
                     <!-- end row -->
