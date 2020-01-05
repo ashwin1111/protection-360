@@ -159,4 +159,8 @@ export class DashboardPage implements OnInit {
   opt(){
     this.aptservice.getnumber();
   }
+
+  goToProlfilePage() {
+    this.navCtrl.navigateForward('/my-profile');
+  }
 }

@@ -1,858 +1,306 @@
 <ion-content [attr.noScroll]="shouldScroll">
-  <!-- <body> -->
-  <link rel="shortcut icon" href="../../assets/ubold/layouts/light/assets/images/favicon.ico">
+    <!-- <body> -->
+    <link rel="shortcut icon" href="../../assets/ubold/layouts/light/assets/images/favicon.ico">
 
-  <link href="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
 
-  <link href="../../assets/ubold/layouts/light/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <link href="../../assets/ubold/layouts/light/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-  <link href="../../assets/ubold/layouts/light/assets/css/app.min.css" rel="stylesheet" type="text/css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="../../assets/ubold/layouts/light/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/ubold/layouts/light/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/ubold/layouts/light/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <style>
-      .showright {
-          right: 0px;
-      }
-  </style>
-  <!-- Begin page -->
-  <div style="overflow: scroll !important;" id="wrapper">
-      <!-- Topbar Start -->
-      <div class="navbar-custom">
-          <ul class="list-unstyled topnav-menu float-right mb-0">
-              <li class="d-none d-sm-block">
-                  <form class="app-search">
-                      <div class="app-search-box">
-                          <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Search...">
-                              <div class="input-group-append">
-                                  <button class="btn" type="submit">
-                                      <i class="fe-search"></i>
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                  </form>
-              </li>
-              <li class="dropdown notification-list">
-                  <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                      <i class="fe-bell noti-icon"></i>
-                      <span class="badge badge-danger rounded-circle noti-icon-badge">3</span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-                      <!-- item-->
-                      <div class="dropdown-item noti-title">
-                          <h5 class="m-0">
-                                  <span class="float-right">
-                                      <a href="" class="text-dark">
-                                          <!-- <small>Clear All</small> -->
-                                      </a>
-                                  </span>Notification
-                              </h5>
-                      </div>
-                      <div class="slimscroll noti-scroll">
-                          <!-- item-->
-                          <a href="javascript:void(0);" class="dropdown-item notify-item">
-                              <div class="notify-icon">
-                                  <img src="../../assets/ubold/layouts/light/assets/images/email.png" class="img-fluid rounded-circle" alt="" /> </div>
-                              <p class="notify-details">Verify Email</p>
-                              <p class="text-muted mb-0 user-msg">
-                                  <small>Verify your email through confimation email</small>
-                              </p>
-                          </a>
-                          <!-- item-->
-                          <a href="javascript:void(0);" class="dropdown-item notify-item">
-                              <div class="notify-icon">
-                                  <img src="../../assets/ubold/layouts/light/assets/images/phone.png" class="img-fluid rounded-circle" style="width:70%;height:70%;" alt="" /> </div>
-                              <p class="notify-details">Verify Phone</p>
-                                  <!-- <p class="text-muted mb-0 user-msg"> -->
-                                  <p class="text-muted mb-0 user-msg">
-                                      <small class="text-muted">Verify your mobile number through otp</small>
-                                  </p>
-                          </a>
-                          <a href="javascript:void(0);" class="dropdown-item notify-item">
-                              <div class="notify-icon">
-                                  <img src="../../assets/ubold/layouts/light/assets/images/kyc.png" class="img-fluid rounded-circle" alt="" /> </div>
-                              <p class="notify-details">Verify KYC</p>
-                                  <!-- <p class="text-muted mb-0 user-msg"> -->
-                                  <p class="text-muted mb-0 user-msg">
-                                      <small class="text-muted">Verify your account by uploading KYC</small>
-                                  </p>
-                          </a>
-                      </div>
-                      <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                          <!-- View all -->
-                          <i class="fi-arrow-right"></i>
-                      </a>
-                  </div>
-              </li>
-              <li class="dropdown notification-list">
-                  <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                      <img src="../../assets/ubold/layouts/light/assets/images/man.png" alt="user-image" class="rounded-circle">
-                      <span class="pro-user-name ml-1">
-                              Geneva <i class="mdi mdi-chevron-down"></i> 
-                          </span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                      <!-- item-->
-                      <a href="javascript:void(0);" class="dropdown-item notify-item">
-                          <i class="fe-user"></i>
-                          <span>My Profile</span>
-                      </a>
-                      <div class="dropdown-divider"></div>
-                      <!-- item-->
-                      <a href="javascript:void(0);" (click)="logout()" class="dropdown-item notify-item">
-                          <i class="fe-log-out"></i>
-                          <span>Logout</span>
-                      </a>
-                  </div>
-              </li>
-          </ul>
-          <!-- LOGO -->
-          <div class="logo-box">
-              <a href="index.html" class="logo text-center">
-                  <span class="logo-lg">
-                          <img src="../../assets/ubold/layouts/light/assets/images/logo-light.png" alt="" height="18">
-                          <!-- <span class="logo-lg-text-light">UBold</span> -->
-                  </span>
-                  <span class="logo-sm">
-                          <!-- <span class="logo-sm-text-dark">U</span> -->
-                  <img src="../../assets/ubold/layouts/light/assets/images/logo-sm.png" alt="" height="24">
-                  </span>
-              </a>
-          </div>
-          <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-              <li>
-                  <button (click)="showleft()" style="display: block;" class="button-menu-mobile waves-effect waves-light">
-                      <i class="fe-menu"></i>
-                  </button>
-              </li>
-              <li class="dropdown d-none d-lg-block">
-                  <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                          Create New
-                          <i class="mdi mdi-chevron-down"></i> 
-                      </a>
-                  <div class="dropdown-menu">
-                      <!-- item-->
-                      <a href="javascript:void(0);" class="dropdown-item">
-                          <i class="fe-briefcase mr-1"></i>
-                          <span>New Projects</span>
-                      </a>
-                      <!-- item-->
-                      <a href="javascript:void(0);" class="dropdown-item">
-                          <i class="fe-user mr-1"></i>
-                          <span>Create Users</span>
-                      </a>
-                      <!-- item-->
-                      <a href="javascript:void(0);" class="dropdown-item">
-                          <i class="fe-bar-chart-line- mr-1"></i>
-                          <span>Revenue Report</span>
-                      </a>
-                      <!-- item-->
-                      <a href="javascript:void(0);" class="dropdown-item">
-                          <i class="fe-settings mr-1"></i>
-                          <span>Settings</span>
-                      </a>
-                      <div class="dropdown-divider"></div>
-                      <!-- item-->
-                      <a href="javascript:void(0);" class="dropdown-item">
-                          <i class="fe-headphones mr-1"></i>
-                          <span>Help & Support</span>
-                      </a>
-                  </div>
-              </li>
-              <li class="dropdown dropdown-mega d-none d-lg-block">
-                  <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                          Mega Menu
-                          <i class="mdi mdi-chevron-down"></i> 
-                      </a>
-                  <div class="dropdown-menu dropdown-megamenu">
-                      <div class="row">
-                          <div class="col-sm-8">
-                              <div class="row">
-                                  <div class="col-md-4">
-                                      <h5 class="text-dark mt-0">UI Components</h5>
-                                      <ul class="list-unstyled megamenu-list">
-                                          <li>
-                                              <a href="javascript:void(0);">Widgets</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Nestable List</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Range Sliders</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Masonry Items</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Sweet Alerts</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Treeview Page</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Tour Page</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <h5 class="text-dark mt-0">Applications</h5>
-                                      <ul class="list-unstyled megamenu-list">
-                                          <li>
-                                              <a href="javascript:void(0);">eCommerce Pages</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">CRM Pages</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Email</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Calendar</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Team Contacts</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Task Board</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Email Templates</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <h5 class="text-dark mt-0">Extra Pages</h5>
-                                      <ul class="list-unstyled megamenu-list">
-                                          <li>
-                                              <a href="javascript:void(0);">Left Sidebar with User</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Menu Collapsed</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Small Left Sidebar</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">New Header Style</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Search Result</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Gallery Pages</a>
-                                          </li>
-                                          <li>
-                                              <a href="javascript:void(0);">Maintenance & Coming Soon</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-sm-4">
-                              <div class="text-center mt-3">
-                                  <h3 class="text-dark">Special Discount Sale!</h3>
-                                  <h4>Save up to 70% off.</h4>
-                                  <button class="btn btn-primary btn-rounded mt-3">Download Now</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </li>
-          </ul>
-      </div>
-      <!-- end Topbar -->
-      <!-- ========== Left Sidebar Start ========== -->
-      <div id="leftbar" style="display: block !important; left: -270px;" class="left-side-menu">
-          <div class="slimscroll-menu">
-              <!--- Sidemenu -->
-              <div id="sidebar-menu">
-                  <ul class="metismenu" id="side-menu">
-                      <li class="menu-title">Navigation</li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-airplay"></i>
-                              <span class="badge badge-success badge-pill float-right">4</span>
-                              <span> Dashboards </span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Dashboard 1</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/dashboard-2.html">Dashboard 2</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/dashboard-3.html">Dashboard 3</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/dashboard-4.html">Dashboard 4</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-pocket"></i>
-                              <span> Apps </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/apps-kanbanboard.html">Kanban Board</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/apps-calendar.html">Calendar</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/apps-contacts.html">Contacts</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/apps-projects.html">Projects</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/apps-tickets.html">Tickets</a>
-                              </li>
-                              <li>
-                                  <a href="../../assets/ubold/layouts/light/apps-companies.html">Companies</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-users"></i>
-                              <span> CRM </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Dashboard</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Contacts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Opportunities</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Leads</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Customers</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-shopping-cart"></i>
-                              <span> eCommerce </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Dashboard</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Products</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Product Detail</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Product Edit</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Orders</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Sellers</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-sidebar"></i>
-                              <span class="badge badge-pink float-right">New</span>
-                              <span> Layouts </span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Sidebar with User</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Small Sidebar</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Dark Sidebar</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Light Topbar</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Preloader</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Sidebar Collapsed</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Boxed</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-mail"></i>
-                              <span> Email </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Inbox</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Read Email</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Compose Email</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Email Templates</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-file-text"></i>
-                              <span> Pages </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Starter</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Log In</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Register</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Signin - Signup</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Recover Password</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Lock Screen</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Logout</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Confirm Mail</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Error 404</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Error 404-alt</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Error 500</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-package"></i>
-                              <span> Extra Pages </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Profile</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Timeline</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Sitemap</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Invoice</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">FAQs</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Search Results</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Pricing</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Maintenance</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Coming Soon</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Gallery</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li class="menu-title mt-2">Components</li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-briefcase"></i>
-                              <span> UI Elements </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Buttons</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Cards</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Portlets</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Tabs & Accordions</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Modals</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Progress</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Notifications</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Spinners</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Images</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Carousel</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Embed Video</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Dropdowns</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Ribbons</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Tooltips & Popovers</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">General UI</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Typography</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Grid</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-layers"></i>
-                              <span class="badge badge-info float-right">Hot</span>
-                              <span> Admin UI </span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Widgets</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Nestable List</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Range Slider</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Animation</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Sweet Alert</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Tour Page</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Loading Buttons</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-cpu"></i>
-                              <span> Icons </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Feather Icons</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Material Design Icons</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Dripicons</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Font Awesome</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Themify</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Simple Line</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Weather</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-bookmark"></i>
-                              <span> Forms </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">General Elements</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Advanced</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Validation</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Pickers</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Wizard</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Masks</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Summernote</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Quilljs Editor</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">File Uploads</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">X Editable</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Image Crop</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-grid"></i>
-                              <span> Tables </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Basic Tables</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Data Tables</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Editable Tables</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Responsive Tables</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">FooTable</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Bootstrap Tables</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Tablesaw Tables</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">JsGrid Tables</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-bar-chart-2"></i>
-                              <span> Charts </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Flot Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Morris Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Chartjs Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Peity Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Chartist Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">C3 Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Sparklines Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Jquery Knob Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Ricksaw Charts</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">JustGage Charts</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-map"></i>
-                              <span> Maps </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li>
-                                  <a href="index.html">Google Maps</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Vector Maps</a>
-                              </li>
-                              <li>
-                                  <a href="index.html">Mapael Maps</a>
-                              </li>
-                          </ul>
-                      </li>
-                      <li>
-                          <a href="javascript: void(0);">
-                              <i class="fe-folder-plus"></i>
-                              <span> Multi Level </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level nav" aria-expanded="false">
-                              <li>
-                                  <a href="javascript: void(0);">Level 1.1</a>
-                              </li>
-                              <li>
-                                  <a href="javascript: void(0);" aria-expanded="false">Level 1.2
-                                          <span class="menu-arrow"></span>
-                                      </a>
-                                  <ul class="nav-third-level nav" aria-expanded="false">
-                                      <li>
-                                          <a href="javascript: void(0);">Level 2.1</a>
-                                      </li>
-                                      <li>
-                                          <a href="javascript: void(0);">Level 2.2</a>
-                                      </li>
-                                  </ul>
-                              </li>
-                          </ul>
-                      </li>
-                  </ul>
-              </div>
-              <!-- End Sidebar -->
-              <div class="clearfix"></div>
-          </div>
-          <!-- Sidebar -left -->
-      </div>
-      <!-- Left Sidebar End -->
-      <!-- ============================================================== -->
-      <!-- Start Page Content here -->
-      <!-- ============================================================== -->
-      <div (click)="hideleft()" class="content-page">
-          <div class="content">
-              <!-- Start Content-->
-              <div class="container-fluid">
-                  <!-- start page title -->
-                  <div class="row">
-                      <div class="col-12">
-                          <div class="page-title-box">
-                              <div class="page-title-right">
-                                  <form class="form-inline">
-                                      <div class="form-group">
-                                          <div class="input-group input-group-sm">
-                                              <input type="text" class="form-control border-white" id="dash-daterange">
-                                              <div class="input-group-append">
-                                                  <span class="input-group-text bg-blue border-blue text-white">
-                                                          <i class="mdi mdi-calendar-range font-13"></i>
-                                                      </span>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-2">
-                                          <i class="mdi mdi-autorenew"></i>
-                                      </a>
-                                      <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-1">
-                                          <i class="mdi mdi-filter-variant"></i>
-                                      </a>
-                                  </form>
-                              </div>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+        .showright {
+            right: 0px;
+        }
+    </style>
+    <!-- Begin page -->
+    <div style="overflow: scroll !important;" id="wrapper">
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="fe-bell noti-icon"></i>
+                        <span class="badge badge-danger rounded-circle noti-icon-badge">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0">
+                                    <span class="float-right">
+                                        <a href="" class="text-dark">
+                                            <!-- <small>Clear All</small> -->
+                                        </a>
+                                    </span>Notification
+                                </h5>
+                        </div>
+                        <div class="slimscroll noti-scroll">
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon">
+                                    <img src="../../assets/ubold/layouts/light/assets/images/email.png" class="img-fluid rounded-circle" alt="" /> </div>
+                                <p class="notify-details">Verify Email</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Verify your email through confimation email</small>
+                                </p>
+                            </a>
+                            <!-- item-->
+                            <a (click)="opt();" class="dropdown-item notify-item">
+                                <div class="notify-icon">
+                                    <img src="../../assets/ubold/layouts/light/assets/images/phone.png" class="img-fluid rounded-circle" style="width:70%;height:70%;" alt="" /> </div>
+                                <p class="notify-details">Verify Phone</p>
+                                    <!-- <p class="text-muted mb-0 user-msg"> -->
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small class="text-muted">Verify your mobile number through otp</small>
+                                    </p>
+                            </a>
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon">
+                                    <img src="../../assets/ubold/layouts/light/assets/images/kyc.png" class="img-fluid rounded-circle" alt="" /> </div>
+                                <p class="notify-details">Verify KYC</p>
+                                    <!-- <p class="text-muted mb-0 user-msg"> -->
+                                    <p class="text-muted mb-0 user-msg">
+                                        <small class="text-muted">Verify your account by uploading KYC</small>
+                                    </p>
+                            </a>
+                        </div>
+                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                            <!-- View all -->
+                            <i class="fi-arrow-right"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img id="profile_img" src={{profile_url}} alt="user-image" class="rounded-circle">
+                        <span class="pro-user-name ml-1">
+                                LOLOLOLO <i class="mdi mdi-chevron-down"></i> 
+                            </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <a (click)="goToProlfilePage()" href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fe-user"></i>
+                            <span>My Profile</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <!-- item-->
+                        <a href="javascript:void(0);" (click)="logout()" class="dropdown-item notify-item">
+                            <i class="fe-log-out"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="index.html" class="logo text-center">
+                    <span class="logo-lg">
+                            <img src="../../assets/ubold/layouts/light/assets/images/logo-light.png" alt="" height="18">
+                            <!-- <span class="logo-lg-text-light">UBold</span> -->
+                    </span>
+                    <span class="logo-sm">
+                            <!-- <span class="logo-sm-text-dark">U</span> -->
+                    <img src="../../assets/ubold/layouts/light/assets/images/logo-sm.png" alt="" height="24">
+                    </span>
+                </a>
+            </div>
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button (click)="showleft()" style="display: block;" class="button-menu-mobile waves-effect waves-light">
+                        <i class="fe-menu"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <!-- end Topbar -->
+        <!-- ========== Left Sidebar Start ========== -->
+        <div id="leftbar" style="display: block !important; left: -270px;" class="left-side-menu">
+            <div class="slimscroll-menu">
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul class="metismenu" id="side-menu">
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fe-airplay"></i>
+                                <span class="badge badge-success badge-pill float-right">4</span>
+                                <span> Dashboards </span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="index.html">Dashboard 1</a>
+                                </li>
+                                <li>
+                                    <a href="../../assets/ubold/layouts/light/dashboard-2.html">Dashboard 2</a>
+                                </li>
+                                <li>
+                                    <a href="../../assets/ubold/layouts/light/dashboard-3.html">Dashboard 3</a>
+                                </li>
+                                <li>
+                                    <a href="../../assets/ubold/layouts/light/dashboard-4.html">Dashboard 4</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Sidebar -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- Sidebar -left -->
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <div (click)="hideleft()" class="content">
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <form class="form-inline">
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm">
+                                                <input (change)="upload($event)" type="file" class="image-upload" accept="image/*">
+                                                <!-- <input type="text" class="form-control border-white" id="dash-daterange"> -->
+                                                <div (click)="upload()" class="input-group-append">
+                                                    <span class="input-group-text bg-blue border-blue text-white">
+                                                            <i class="mdi mdi-calendar-range font-13"></i>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-2">
+                                            <i class="mdi mdi-autorenew"></i>
+                                        </a>
+                                        <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-1">
+                                            <i class="mdi mdi-filter-variant"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                                <h4 class="page-title" (click)="navigateToRegistration()">Registration Page</h4>
                             </div>
-                      </div>
-                  </div>
-                  <!-- end page title -->
-                  <!-- end row-->
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
+                                            <i class="fe-heart font-22 avatar-title text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <h3 class="text-dark mt-1">$<span data-plugin="counterup">5847</span></h3>
+                                            <p class="text-muted mb-1 text-truncate">Total Revenue</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row-->
+                            </div>
+                            <!-- end widget-rounded-circle-->
+                        </div>
+                        <!-- end col-->
+                        <div class="col-md-6 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="avatar-lg rounded-circle bg-soft-success border-success border">
+                                            <i class="fe-shopping-cart font-22 avatar-title text-success"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
+                                            <p class="text-muted mb-1 text-truncate">Today's Sales</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row-->
+                            </div>
+                            <!-- end widget-rounded-circle-->
+                        </div>
+                        <!-- end col-->
+                        <div class="col-md-6 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                                            <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
+                                            <p class="text-muted mb-1 text-truncate">Conversion</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row-->
+                            </div>
+                            <!-- end widget-rounded-circle-->
+                        </div>
+                        <!-- end col-->
+                        <div class="col-md-6 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                            <i class="fe-eye font-22 avatar-title text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <h3 class="text-dark mt-1"><span data-plugin="counterup">78.41</span>k</h3>
+                                            <p class="text-muted mb-1 text-truncate">Today's Visits</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row-->
+                            </div>
+                            <!-- end widget-rounded-circle-->
+                        </div>
+                        <!-- end col-->
+                    </div>
+                    <!-- end row-->
 
-                  <!-- end row -->
+                    <!-- end row -->
 
-                  <!-- end row -->
-              </div>
-              <!-- container -->
-          </div>
-          <!-- content -->
-      </div>
-      <!-- ============================================================== -->
-      <!-- End Page content -->
-      <!-- ============================================================== -->
-  </div>
-  <!-- END wrapper -->
+                    <!-- end row -->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
 
-  <!-- Right bar overlay-->
-  <!-- Vendor js -->
-  <script src="../../assets/ubold/layouts/light/assets/js/vendor.min.js"></script>
-  <!-- Plugins js-->
-  <script src="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.js"></script>
-  <script src="../../assets/ubold/layouts/light/assets/libs/jquery-knob/jquery.knob.min.js"></script>
-  <script src="../../assets/ubold/layouts/light/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
-  <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.js"></script>
-  <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.time.js"></script>
-  <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.tooltip.min.js"></script>
-  <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.selection.js"></script>
-  <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.crosshair.js"></script>
-  <!-- Dashboar 1 init js-->
-  <script src="../../assets/ubold/layouts/light/assets/js/pages/dashboard-1.init.js"></script>
-  <!-- App js-->
-  <script src="../../assets/ubold/layouts/light/assets/js/app.min.js"></script>
-  <!-- </body> -->
+    <!-- Right bar overlay-->
+    <!-- Vendor js -->
+    <script src="../../assets/ubold/layouts/light/assets/js/vendor.min.js"></script>
+    <!-- Plugins js-->
+    <script src="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.time.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.tooltip.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.selection.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.crosshair.js"></script>
+    <!-- Dashboar 1 init js-->
+    <script src="../../assets/ubold/layouts/light/assets/js/pages/dashboard-1.init.js"></script>
+    <!-- App js-->
+    <script src="../../assets/ubold/layouts/light/assets/js/app.min.js"></script>
+    <!-- </body> -->
 </ion-content>

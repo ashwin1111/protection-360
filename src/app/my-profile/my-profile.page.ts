@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyProfilePage implements OnInit {
 
-  constructor() { }
+  profile_url:string;
+  constructor() { 
+    this.profile_url=localStorage.getItem('profile_url');
+  }
 
   ngOnInit() {
   }
