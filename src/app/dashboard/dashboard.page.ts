@@ -42,6 +42,7 @@ export class DashboardPage implements OnInit {
       else{
         this.profile_url="../../assets/ubold/layouts/light/assets/images/man.png";
       }
+      console.log('profile_url',this.profile_url)
     }
   }
  

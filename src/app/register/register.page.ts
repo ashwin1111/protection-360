@@ -68,6 +68,8 @@ export class RegisterPage implements OnInit {
       .then(() => {
         console.log('email sent');
         this.router.navigate(['']);
+      }, err => {
+        console.log('verify email failed', err)
       })
     });
   }

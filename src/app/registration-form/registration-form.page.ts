@@ -207,7 +207,7 @@ export class RegistrationFormPage implements OnInit {
     this.registration_form = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('^[a-zA-Z]+(?:-[a-zA-Z]+)*$')
       ])),
       email: [''],
      mobile_number: new FormControl('', Validators.compose([
