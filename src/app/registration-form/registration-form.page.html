@@ -177,108 +177,157 @@
                                     <div class="row">
                                         <div class="col-lg-6">
 
-                                            <form [formGroup]="registration_form" (ngSubmit)="register(registration_form.value)">
+<form [formGroup]="registration_form" (ngSubmit)="register(registration_form.value)">
 
                                                 <div class="form-group mb-3">
                                                     <label for="simpleinput">Name</label>
-                                                    <ion-input formControlName="name" type="text" id="simpleinput" class="form-control" placeholder="placeholder"></ion-input>
+                                                    <ion-input formControlName="name" type="text" id="simpleinput" class="form-control" placeholder="Enter Your Name" required></ion-input>
+    <ng-container *ngFor="let validation of validation_messages.name">
+        <div class="error-message" *ngIf="registration_form.get('name').hasError(validation.type) && (registration_form.get('name').dirty || registration_form.get('name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-disable">Email</label>
-                                                    <ion-input formControlName="email" type="text" class="form-control" id="example-disable" disabled="" value="Disabled value"></ion-input>
+                                                    <ion-input formControlName="email" type="text" class="form-control" id="example-disable" disabled="" value="user email"></ion-input>
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-number">Mobile Number</label>
-                                                    <ion-input formControlName="mobile_number" class="form-control" id="example-number" type="number" name="number"></ion-input>
+                                                    <ion-input formControlName="mobile_number" class="form-control" id="example-number" type="tel" name="number" placeholder="Enter Mobile Number" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.mobile_number">
+        <div class="error-message" *ngIf="registration_form.get('mobile_number').hasError(validation.type) && (registration_form.get('mobile_number').dirty || registration_form.get('mobile_number').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-textarea">Current Address</label>
-                                                    <textarea formControlName="current_address" class="form-control" id="example-textarea" rows="5"></textarea>
+                                                    <textarea formControlName="current_address" class="form-control" id="example-textarea" rows="5" placeholder="Enter Address" required></textarea>
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-date">Date of Birth</label>
-                                                    <ion-input formControlName="date_of_birth" class="form-control" id="example-date" type="date" name="date"></ion-input>
+                                                    <ion-input formControlName="date_of_birth" class="form-control" id="example-date" type="date" name="date" required></ion-input>
                                                 </div>
 
                                                 <div class="form-group mb-3">
+                                                    <label for="example-date">Gender</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input formControlName="gender" type="radio" id="customRadio1" name="gender" class="custom-control-input">
-                                                            <label class="custom-control-label" for="customRadio1">Male</label>
+                                                            <div class="radio radio-info form-check-inline">
+                                                    <input id="male" type="radio" value="male" name="gender" formControlName="gender" required>
+                                                    <label for="inlineRadio1"> Male </label>
+                                                </div>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input formControlName="gender" type="radio" id="customRadio2" name="gender" class="custom-control-input">
-                                                        <label class="custom-control-label" for="customRadio2">Female</label>
+                                                        <div class="radio radio-info form-check-inline">
+                                                    <input id="female" type="radio" value="female" name="gender" formControlName="gender" required>
+                                                    <label for="inlineRadio2"> Female </label>
+                                                </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="simpleinput">Occupation</label>
-                                                    <ion-input formControlName="occupation" type="text" id="simpleinput" class="form-control" placeholder="placeholder"></ion-input>
+                                                    <ion-input formControlName="occupation" type="text" id="simpleinput" class="form-control" placeholder="Enter Occupation" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.occupation">
+        <div class="error-message" *ngIf="registration_form.get('occupation').hasError(validation.type) && (registration_form.get('occupation').dirty || registration_form.get('occupation').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                 </div>
 
                                                 <div>
-                                                    <label for="example-disable">Fatherrrrrrrr </label>
+                                                    <label for="example-disable">Father Details</label>
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="simpleinput">Name</label>
-                                                    <ion-input formControlName="father_name" type="text" id="simpleinput" class="form-control" placeholder="placeholder"></ion-input>
+                                                    <ion-input formControlName="father_name" type="text" id="simpleinput" class="form-control" placeholder="Enter Name" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.father_name">
+        <div class="error-message" *ngIf="registration_form.get('father_name').hasError(validation.type) && (registration_form.get('father_name').dirty || registration_form.get('father_name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-number">Mobile Number</label>
-                                                    <ion-input formControlName="father_mobile_number" class="form-control" id="example-number" type="number" name="number"></ion-input>
+                                                    <ion-input formControlName="father_mobile_number" class="form-control" id="example-number" type="text" name="number"placeholder="Enter Mobile Number" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.father_mobile_number">
+        <div class="error-message" *ngIf="registration_form.get('father_mobile_number').hasError(validation.type) && (registration_form.get('father_mobile_number').dirty || registration_form.get('father_mobile_number').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
-                                                    <ion-input formControlName="father_email_address" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></ion-input>
+                                                    <ion-input formControlName="father_email_address" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.father_email_address">
+        <div class="error-message" *ngIf="registration_form.get('father_email_address').hasError(validation.type) && (registration_form.get('father_email_address').dirty || registration_form.get('father_email_address').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-textarea">Current Address</label>
-                                                    <textarea formControlName="father_current_address" class="form-control" id="example-textarea" rows="5"></textarea>
+                                                    <textarea formControlName="father_current_address" class="form-control" id="example-textarea" rows="5" placeholder="Enter Address" required></textarea>
                                                 </div>
 
                                                 <div>
-                                                    <label for="example-disable">Guardiannnnnnnnn </label>
+                                                    <label for="example-disable">Guardian Details</label>
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="simpleinput">Name</label>
-                                                    <ion-input formControlName="guardian_name" type="text" id="simpleinput" class="form-control" placeholder="placeholder"></ion-input>
+                                                    <ion-input formControlName="guardian_name" type="text" id="simpleinput" class="form-control" placeholder="Enter Name" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.guardian_name">
+        <div class="error-message" *ngIf="registration_form.get('guardian_name').hasError(validation.type) && (registration_form.get('guardian_name').dirty || registration_form.get('guardian_name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-number">Mobile Number</label>
-                                                    <ion-input formControlName="guardian_mobile_number" class="form-control" id="example-number" type="number" name="number"></ion-input>
+                                                    <ion-input formControlName="guardian_mobile_number" class="form-control" id="example-number" type="tel" name="number" placeholder="Enter Mobile Number" required></ion-input>
+                                                       <ng-container *ngFor="let validation of validation_messages.guardian_mobile_number">
+        <div class="error-message" *ngIf="registration_form.get('guardian_mobile_number').hasError(validation.type) && (registration_form.get('guardian_mobile_number').dirty || registration_form.get('guardian_mobile_number').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
-                                                    <ion-input formControlName="guardian_email_address" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></ion-input>
+                                                    <ion-input formControlName="guardian_email_address" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.guardian_email_address">
+        <div class="error-message" *ngIf="registration_form.get('guardian_email_address').hasError(validation.type) && (registration_form.get('guardian_email_address').dirty || registration_form.get('guardian_email_address').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
                                                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                                                 </div>
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-textarea">Current Address</label>
-                                                    <textarea formControlName="guardian_current_address" class="form-control" id="example-textarea" rows="5"></textarea>
+                                                    <textarea formControlName="guardian_current_address" class="form-control" id="example-textarea" rows="5" required="required" required></textarea>
                                                 </div>
 
-                                                <div class="form-group mb-3">
+                                                <!-- <div class="form-group mb-3">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="checkmeout0">
+                                                        <input type="checkbox" class="custom-control-input" id="checkmeout0" required>
                                                         <label class="custom-control-label" for="checkmeout0">Email preffff</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
-                                                <button class="btn btn-primary waves-effect waves-light" type="submit">Register</button>
-
-                                            </form>
-
+                                                <button class="btn btn-primary waves-effect waves-light" type="submit" [disabled]="!registration_form.valid">Register</button>
+</form>
+                                           <!--  <button (click)="registration()">helloo</button> -->
                                         </div>
                                         <!-- end col -->
                                     </div>
