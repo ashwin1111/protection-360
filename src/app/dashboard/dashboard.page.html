@@ -23,7 +23,7 @@
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <i class="fe-bell noti-icon"></i>
-                        <span class="badge badge-danger rounded-circle noti-icon-badge">3</span>
+                        <span id="count" class="badge badge-danger rounded-circle noti-icon-badge">{{count}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-lg">
                         <!-- item-->
@@ -38,7 +38,7 @@
                         </div>
                         <div class="slimscroll noti-scroll">
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a id="emailverify" href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon">
                                     <img src="../../assets/ubold/layouts/light/assets/images/email.png" class="img-fluid rounded-circle" alt="" /> </div>
                                 <p class="notify-details">Verify Email</p>
@@ -47,7 +47,7 @@
                                 </p>
                             </a>
                             <!-- item-->
-                            <a (click)="opt();" class="dropdown-item notify-item">
+                            <a id="phoneverify" (click)="opt();" class="dropdown-item notify-item">
                                 <div class="notify-icon">
                                     <img src="../../assets/ubold/layouts/light/assets/images/phone.png" class="img-fluid rounded-circle" style="width:70%;height:70%;" alt="" /> </div>
                                 <p class="notify-details">Verify Phone</p>
@@ -76,7 +76,7 @@
                     <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <img id="profile_img" src={{profile_url}} alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ml-1">
-                                LOLOLOLO <i class="mdi mdi-chevron-down"></i> 
+                                {{user_name}} <i class="mdi mdi-chevron-down"></i> 
                             </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -162,12 +162,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box">
-                                <div class="page-title-right">
+                                <!-- <div class="page-title-right">
                                     <form class="form-inline">
                                         <div class="form-group">
                                             <div class="input-group input-group-sm">
                                                 <input (change)="upload($event)" type="file" class="image-upload" accept="image/*">
-                                                <!-- <input type="text" class="form-control border-white" id="dash-daterange"> -->
                                                 <div (click)="upload()" class="input-group-append">
                                                     <span class="input-group-text bg-blue border-blue text-white">
                                                             <i class="mdi mdi-calendar-range font-13"></i>
@@ -182,7 +181,7 @@
                                             <i class="mdi mdi-filter-variant"></i>
                                         </a>
                                     </form>
-                                </div>
+                                </div> -->
                                 <h4 class="page-title" (click)="navigateToRegistration()">Registration Page</h4>
                             </div>
                         </div>

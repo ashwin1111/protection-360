@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Details, profile } from '../shared/Details';
+import { Details, profile , numberverify,replydet,qusdet} from '../shared/Details';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import * as firebase from 'firebase';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
@@ -69,13 +69,47 @@ export class detailsservice {
     })
    
   }
-
-  checkopt(){
+uploadnumber(apt: numberverify){
+  return new Promise<any>((resolve,reject)=>{
     var key = localStorage.getItem('uid');
-    var ref= firebase.database().ref('users/');
-    ref.once('value',res=>{
-        var opt=res.val().opt;
-
-    })
+    this.bookingListRef=this.db.list('users/');
+    this.bookingListRef.update(key,apt).then(
+    res=>resolve(res),
+    err=>reject(err))
+  })
+}
+  reply(apt:replydet,key){
+     return new Promise<any>((resolve,reject)=>{
+    this.bookingListRef=this.db.list('question/'+key+'/reply');
+    this.bookingListRef.push(apt).then(
+    res=>resolve(res),
+    err=>reject(err))
+  })
   }
+
+  qus(apt:qusdet){
+     return new Promise<any>((resolve,reject)=>{
+       var key = apt.name+(Math.floor(1000 + Math.random() * 9000) + 1);
+    this.bookingListRef=this.db.list('question/');
+    this.bookingListRef.update(key,apt).then(
+    
+    res=>resolve(res),
+    err=>reject(err))
+    this.replyfirst(key);
+  })
+  }
+
+  replyfirst(key){
+    var apt={
+      profile_url:'test',
+      name:'test',
+      reply:'test'
+    }
+    return new Promise<any>((resolve,reject)=>{
+      this.bookingListRef=this.db.list('question/'+key+'/reply');
+      this.bookingListRef.update('test',apt).then(
+      res=>resolve(res),
+      err=>reject(err))
+  })
+}
 }

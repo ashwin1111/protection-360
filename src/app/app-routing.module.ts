@@ -17,7 +17,15 @@ const routes: Routes = [
   {
     path: 'warning',
     loadChildren: () => import('./warning/warning.module').then( m => m.WarningPageModule)
+  },  {
+    path: 'otp',
+    loadChildren: () => import('./otp/otp.module').then( m => m.OtpPageModule)
+  },
+  {
+    path: 'neighbour',
+    loadChildren: () => import('./neighbour/neighbour.module').then( m => m.NeighbourPageModule)
   }
+
 
 
 ];
