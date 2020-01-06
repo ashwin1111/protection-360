@@ -3,6 +3,8 @@ import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { detailsservice } from '../shared/details.service';
+import { AngularFireAuth } from "@angular/fire/auth";
+import * as firebase from 'firebase';
 
 
 export interface Image {
@@ -22,16 +24,19 @@ export class DashboardPage implements OnInit {
  
   url: any;
   loading: boolean = false;
+   user_name:string;
   newImage: Image = {
     id: localStorage.getItem('uid'), image: ''
   }
   userEmail: string;
   profile_url:string;
+  count:number;
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
-    private aptservice:detailsservice
+    private aptservice:detailsservice,
+    public afAuth: AngularFireAuth
   ) {
     if (!localStorage.getItem('uid')) {
       this.navCtrl.navigateForward('');
@@ -47,6 +52,22 @@ export class DashboardPage implements OnInit {
   }
  
   ngOnInit() {
+    this.count=3;
+    this.afAuth.authState.subscribe(user => {
+      if(user.emailVerified){
+          document.getElementById('emailverify').remove();
+          this.count=this.count-1;
+      }
+      var key = localStorage.getItem('uid');
+      var ref= firebase.database().ref('users/'+key);
+      ref.once('value',res=>{
+        this.user_name=res.val().name;
+          if(res.val().numberverfied==1){
+            document.getElementById('phoneverify').remove();
+            this.count=this.count-1;
+          }
+      });
+    });
     var isMobile = {
       Android: function() {
           return navigator.userAgent.match(/Android/i);
@@ -158,7 +179,8 @@ export class DashboardPage implements OnInit {
   }
 
   opt(){
-    this.aptservice.getnumber();
+    this.navCtrl.navigateForward('/otp');
+    //this.aptservice.getnumber();
   }
 
   goToProlfilePage() {

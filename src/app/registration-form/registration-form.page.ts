@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { detailsservice } from '../shared/details.service';
 import { NavController, ModalController } from '@ionic/angular';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-registration-form',
@@ -12,11 +13,13 @@ import { NavController, ModalController } from '@ionic/angular';
 export class RegistrationFormPage implements OnInit {
   registration_form: FormGroup;
   profile_url:string;
-
+ user_name:string;
+ user_mail:string;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private navCtrl: NavController,
-    private aptservice:detailsservice
+    private aptservice:detailsservice,
+     public afAuth: AngularFireAuth
     ) {  if (!localStorage.getItem('uid')) {
       this.navCtrl.navigateForward('');
     }else{
@@ -118,6 +121,11 @@ export class RegistrationFormPage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.afAuth.authState.subscribe(user => {
+      console.log(user.email);
+      this.user_mail=user.email;
+    });
     var isMobile = {
       Android: function() {
           return navigator.userAgent.match(/Android/i);

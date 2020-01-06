@@ -75,7 +75,7 @@
                     <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <img src={{profile_url}} alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ml-1">
-                                LOLOLOLO <i class="mdi mdi-chevron-down"></i> 
+                            {{user_name}} <i class="mdi mdi-chevron-down"></i> 
                             </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -191,7 +191,7 @@
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-disable">Email</label>
-                                                    <ion-input formControlName="email" type="text" class="form-control" id="example-disable" disabled="" value="user email"></ion-input>
+                                                    <ion-input formControlName="email" type="text" class="form-control" id="example-disable" disabled="" value={{user_mail}}></ion-input>
                                                 </div>
 
                                                 <div class="form-group mb-3">

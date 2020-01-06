@@ -15,7 +15,20 @@ export class Details {
     guardian_current_address:string;
 
 }
-
+export class replydet{
+    profile_url:string;
+    name:string;
+    reply:string;
+}
 export class profile{
     img_url:string;
+}
+
+export class qusdet{
+    profile_url:string;
+    name:string;
+    question:string;
+}
+export class numberverify{
+    numberverfied:number;
 }

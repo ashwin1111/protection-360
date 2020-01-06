@@ -23,7 +23,7 @@
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <i class="fe-bell noti-icon"></i>
-                        <span class="badge badge-danger rounded-circle noti-icon-badge">3</span>
+                        <span class="badge badge-danger rounded-circle noti-icon-badge">{{count}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-lg">
                         <!-- item-->
@@ -38,7 +38,7 @@
                         </div>
                         <div class="slimscroll noti-scroll">
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a id="emailverify" href="javascript:void(0);" class="dropdown-item notify-item">
                                 <div class="notify-icon">
                                     <img src="../../assets/ubold/layouts/light/assets/images/email.png" class="img-fluid rounded-circle" alt="" /> </div>
                                 <p class="notify-details">Verify Email</p>
@@ -47,7 +47,7 @@
                                 </p>
                             </a>
                             <!-- item-->
-                            <a (click)="opt();" class="dropdown-item notify-item">
+                            <a id="phoneverify" (click)="opt();" class="dropdown-item notify-item">
                                 <div class="notify-icon">
                                     <img src="../../assets/ubold/layouts/light/assets/images/phone.png" class="img-fluid rounded-circle" style="width:70%;height:70%;" alt="" /> </div>
                                 <p class="notify-details">Verify Phone</p>
@@ -76,7 +76,7 @@
                     <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <img id="profile_img" src={{profile_url}} alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ml-1">
-                                LOLOLOLO <i class="mdi mdi-chevron-down"></i> 
+                            {{user_name}}<i class="mdi mdi-chevron-down"></i> 
                             </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -117,7 +117,7 @@
         </div>
         <!-- end Topbar -->
         <!-- ========== Left Sidebar Start ========== -->
-        <div id="leftbar" style="display: block !important; left: -270px;" class="left-side-menu">
+        <div id="leftbar3" style="display: block !important; left: -270px;" class="left-side-menu">
             <div class="slimscroll-menu">
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
@@ -162,12 +162,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box">
-                                <div class="page-title-right">
+                                <!-- <div class="page-title-right">
                                     <form class="form-inline">
                                         <div class="form-group">
                                             <div class="input-group input-group-sm">
                                                 <input (change)="upload($event)" type="file" class="image-upload" accept="image/*">
-                                                <!-- <input type="text" class="form-control border-white" id="dash-daterange"> -->
                                                 <div (click)="upload()" class="input-group-append">
                                                     <span class="input-group-text bg-blue border-blue text-white">
                                                             <i class="mdi mdi-calendar-range font-13"></i>
@@ -182,7 +181,7 @@
                                             <i class="mdi mdi-filter-variant"></i>
                                         </a>
                                     </form>
-                                </div>
+                                </div> -->
                                 <!-- <h4 class="page-title" (click)="navigateToRegistration()">Registration Page</h4> -->
                             </div>
                         </div>
@@ -199,7 +198,19 @@
           margin: 0 auto;
           ">
                                           <img src={{profile_url}} class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
-                                          <h4 class="mb-0">Geneva McKnight</h4>
+                                          <div (click)="triggerin()">
+                                            <span style="
+                                                position: relative;
+                                                right: -40px;
+                                                top: -30px;
+                                            ">
+                                                <i class="fa fa-edit"></i>
+                                            <input id="img" (change)="upload($event)" _ngcontent-htv-c3="" accept="image/*" class="image-upload" type="file" style="
+                                                display: none;
+                                            ">
+                                            </span>
+                                            </div>
+                                          <h4 class="mb-0">{{name}}</h4>
                                           <p class="text-muted"></p>
                                           <button (click)="goToRegisterForm()" type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Edit Profile</button>
                                           <!-- <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Message</button> -->
@@ -209,23 +220,21 @@
                                                   Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the
                                                   1500s, when an unknown printer took a galley of type.
                                               </p> -->
-                                              <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">Geneva
-                                                      D. McKnight</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Mobile Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Current Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Date of Birth :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Gender :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Occupation :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Father Name :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Father Mobile Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Father Email Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Father Current Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Guardian Name :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Guardian Mobile Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Guardian Email Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Guardian Current Address :</strong> <span class="ml-2 ">user@email.domain</span></p>
-                                              <p class="text-muted mb-2 font-13"><strong>Email Preference:</strong> <span class="ml-2 ">user@email.domain</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{name}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{email}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Mobile Number :</strong> <span class="ml-2 ">{{mobileno}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Current Address :</strong> <span class="ml-2 ">{{cur_add}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Date of Birth :</strong> <span class="ml-2 ">{{DOB}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Gender :</strong> <span class="ml-2 ">{{gender}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Occupation :</strong> <span class="ml-2 ">{{Occupation}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Name :</strong> <span class="ml-2 ">{{fname}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Mobile Number :</strong> <span class="ml-2 ">{{fnumber}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Email Address :</strong> <span class="ml-2 ">{{femail}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Father Current Address :</strong> <span class="ml-2 ">{{faddress}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Name :</strong> <span class="ml-2 ">{{gname}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Mobile Number :</strong> <span class="ml-2 ">{{gnumber}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Email Address :</strong> <span class="ml-2 ">{{gemail}}</span></p>
+                                              <p class="text-muted mb-2 font-13"><strong>Guardian Current Address :</strong> <span class="ml-2 ">{{gaddress}}</span></p>
 
                                           </div>
                                       </div> <!-- end card-box -->
