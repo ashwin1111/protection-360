@@ -17,7 +17,11 @@ const routes: Routes = [
   {
     path: 'warning',
     loadChildren: () => import('./warning/warning.module').then( m => m.WarningPageModule)
+  },  {
+    path: 'chat-ivr',
+    loadChildren: () => import('./chat-ivr/chat-ivr.module').then( m => m.ChatIvrPageModule)
   }
+
 
 
 ];
