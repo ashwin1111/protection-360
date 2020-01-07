@@ -1,6 +1,6 @@
 # Protection 360
 
-Protection 360 webapp [Live Demo](https://node-postgres-api.firebaseapp.com/)
+Protection 360 webapp [Live Demo](https://citysafe-cef35.firebaseapp.com/)
 Android APK [Download Link](https://drive.google.com/open?id=1BjItmRA7AdRlrhF9IOsLC6H39HIsts6A)
 
 ## Development server
