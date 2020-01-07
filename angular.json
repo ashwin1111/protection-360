@@ -37,9 +37,35 @@
               },
               {
                 "input": "src/global.scss"
+              },
+              {
+                "input": "src/assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.css"
+              },
+              {
+                "input": "src/assets/ubold/layouts/light/assets/css/bootstrap.min.css"
+              },
+              {
+                "input": "src/assets/ubold/layouts/light/assets/css/icons.min.css"
+              },
+              {
+                "input": "src/assets/ubold/layouts/light/assets/css/app.min.css"
               }
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/ubold/layouts/light/assets/js/jquery.js",
+              "src/assets/ubold/layouts/light/assets/js/bootstrap.js",
+              "src/assets/ubold/layouts/light/assets/js/vendor.min.js",
+              "src/assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.js",
+              "src/assets/ubold/layouts/light/assets/libs/jquery-knob/jquery.knob.min.js",
+              "src/assets/ubold/layouts/light/assets/libs/jquery-sparkline/jquery.sparkline.min.js",
+              "src/assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.js",
+              "src/assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.time.js",
+              "src/assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.tooltip.min.js",
+              "src/assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.selection.js",
+              "src/assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.crosshair.js",
+              "src/assets/ubold/layouts/light/assets/js/pages/dashboard-1.init.js",
+              "src/assets/ubold/layouts/light/assets/js/app.min.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -1,0 +1,266 @@
+ <!-- ========== Left Sidebar Start ========== -->
+ <div id="safe_leftbar" style="display: block !important; left: -270px;" class="left-side-menu">
+  <div class="slimscroll-menu">
+      <!--- Sidemenu -->
+      <div id="sidebar-menu">
+          
+          <ul class="metismenu" id="side-menu">
+              <li>
+                  <a (click)="home()">
+                      <i class="fe-airplay"></i>
+                      <!-- <span class="badge badge-success badge-pill float-right">4</span> -->
+                      <span> Home </span>
+                  </a>
+                 
+              </li>
+          </ul>
+          <ul class="metismenu" id="side-menu">
+              <li>
+                  <a (click)="redirect_warning()">
+                      <i class="fe-airplay"></i>
+                      <span> Emergency </span>
+                  </a>
+                 
+              </li>
+          </ul>
+          <ul class="metismenu" id="side-menu">
+              <li>
+                  <a (click)="askhelp()">
+                      <i class="fe-airplay"></i>
+                      <span> Ask for Help </span>
+                  </a>
+                 
+              </li>
+          </ul>
+          <ul class="metismenu" id="side-menu">
+              <li>
+                  <a (click)="chatbot()">
+                      <i class="fe-airplay"></i>
+                      <span> ChatBot IVR</span>
+                  </a>
+                 
+              </li>
+          </ul>
+          <ul class="metismenu" id="side-menu">
+              <li>
+                  <a (click)="blog()">
+                      <i class="fe-airplay"></i>
+                      <span> Safety Measures </span>
+                  </a>
+                 
+              </li>
+          </ul>
+          
+          <!-- <ul class="nav-second-level" aria-expanded="false">
+              <li>
+                  <a href="index.html">Home</a>
+              </li>
+              <li>
+                  <a  (click)="navigateToRegistration()">Registration Page</a>
+              </li>
+              <li>
+                  <a  (click)="navigateToWarning()">Warning</a>
+              </li>
+              
+          </ul> -->
+      </div>
+      <!-- End Sidebar -->
+      <div class="clearfix"></div>
+  </div>
+  <!-- Sidebar -left -->
+</div>
+<!-- Left Sidebar End -->
+  <!-- Topbar Start -->
+<div class="navbar-custom">
+  <ul class="list-unstyled topnav-menu float-right mb-0">
+      <li class="dropdown notification-list">
+          <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+              <i class="fe-bell noti-icon"></i>
+              <span id="count" class="badge badge-danger rounded-circle noti-icon-badge">{{count}}</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+              <!-- item-->
+              <div class="dropdown-item noti-title">
+                  <h5 class="m-0">
+                          <span class="float-right">
+                              <a href="" class="text-dark">
+                                  <!-- <small>Clear All</small> -->
+                              </a>
+                          </span>Notification
+                      </h5>
+              </div>
+              <div class="slimscroll noti-scroll">
+                  <!-- item-->
+                  <a id="safe_emailverify" href="javascript:void(0);" class="dropdown-item notify-item">
+                      <div class="notify-icon">
+                          <img src="../../assets/ubold/layouts/light/assets/images/email.png" class="img-fluid rounded-circle" alt="" /> </div>
+                      <p class="notify-details">Verify Email</p>
+                      <p class="text-muted mb-0 user-msg">
+                          <small>Verify your email through confimation email</small>
+                      </p>
+                  </a>
+                  <!-- item-->
+                  <a id="phoneverify" (click)="opt();" class="dropdown-item notify-item">
+                      <div class="notify-icon">
+                          <img src="../../assets/ubold/layouts/light/assets/images/phone.png" class="img-fluid rounded-circle" style="width:70%;height:70%;" alt="" /> </div>
+                      <p class="notify-details">Verify Phone</p>
+                          <!-- <p class="text-muted mb-0 user-msg"> -->
+                          <p class="text-muted mb-0 user-msg">
+                              <small class="text-muted">Verify your mobile number through otp</small>
+                          </p>
+                  </a>
+                  <a href="javascript:void(0);" class="dropdown-item notify-item">
+                      <div class="notify-icon">
+                          <img src="../../assets/ubold/layouts/light/assets/images/kyc.png" class="img-fluid rounded-circle" alt="" /> </div>
+                      <p class="notify-details">Verify KYC</p>
+                          <!-- <p class="text-muted mb-0 user-msg"> -->
+                          <p class="text-muted mb-0 user-msg">
+                              <small class="text-muted">Verify your account by uploading KYC</small>
+                          </p>
+                  </a>
+              </div>
+              <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                  <!-- View all -->
+                  <i class="fi-arrow-right"></i>
+              </a>
+          </div>
+      </li>
+      <li class="dropdown notification-list">
+          <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+              <img id="profile_img" src={{profile_url}} alt="user-image" class="rounded-circle">
+              <span class="pro-user-name ml-1">
+                      {{user_name}} <i class="mdi mdi-chevron-down"></i> 
+                  </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+              <!-- item-->
+              <a (click)="goToProlfilePage()" href="javascript:void(0);" class="dropdown-item notify-item">
+                  <i class="fe-user"></i>
+                  <span>My Profile</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <!-- item-->
+              <a href="javascript:void(0);" (click)="logout()" class="dropdown-item notify-item">
+                  <i class="fe-log-out"></i>
+                  <span>Logout</span>
+              </a>
+          </div>
+      </li>
+  </ul>
+  <!-- LOGO -->
+  <div class="logo-box">
+      <a href="index.html" class="logo text-center">
+          <span class="logo-lg">
+                  <img src="../../assets/ubold/layouts/light/assets/images/logo-light.png" alt="" height="18">
+                  <!-- <span class="logo-lg-text-light">UBold</span> -->
+          </span>
+          <span class="logo-sm">
+                  <!-- <span class="logo-sm-text-dark">U</span> -->
+          <img src="../../assets/ubold/layouts/light/assets/images/logo-sm.png" alt="" height="24">
+          </span>
+      </a>
+  </div>
+  <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+      <li>
+          <button (click)="showleft()" style="display: block;" class="button-menu-mobile waves-effect waves-light">
+              <i class="fe-menu"></i>
+          </button>
+      </li>
+  </ul>
+</div>
+<!-- topbar end -->
+<!-- <ion-content [attr.noScroll]="shouldScroll"> -->
+<!-- <body> -->
+<link rel="shortcut icon" href="../../assets/ubold/layouts/light/assets/images/favicon.ico">
+
+<link href="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+
+<link href="../../assets/ubold/layouts/light/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../assets/ubold/layouts/light/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<link href="../../assets/ubold/layouts/light/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+    .showright {
+        right: 0px;
+    }
+</style>
+<!-- Begin page -->
+<div style="overflow: scroll !important;" id="wrapper">
+    
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <div (click)="hideleft()" class="content">
+            <!-- Start Content-->
+            <div class="container-fluid">
+                <!-- start page title -->
+                <div class="row">
+                  <!-- CHAT -->
+                  <div class="col-lg-6 col-xl-3">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" style="size:10%;"  src="../../assets/ubold/layouts/light/assets/images/child.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 align="center">"CHILD SAFETY TIPS" for STRANGER DANGER</h4><br>
+                            <p class="card-text" align="justify">
+                               Know your full name, phone number and address.
+                               Never be alone off your property. Stay with friends – even when going to public lavatories.
+                               Always get your parent’s OK before going anywhere – and phone your parent often.
+                               Walk only on routes to school and elsewhere that your parent has scouted out with you and pointed out safe places along the way. And never walk through parking lots or take other shortcuts.
+                               No headphones or hand-held games to distract you from what’s around.
+                               If someone comes near you, don’t speak to him other than saying, "Go ask an adult.”
+                               Never go near someone in a car or truck. Just run the other way – toward other people.
+                               Cute animals and candy are just two tricks used by bad people to get near you.
+                               Always get your parent’s OK before accepting money or a gift.
+                               If you see someone doing something wrong, go the other direction.
+                               Do not have your name printed on anything visible to strangers.
+                               Give up your valuables if you’re robbed by another kid – never fight back.
+                               Never get money for any school or club project unless your parent is with you.
+                               Don’t trust anyone who tries to get you to break your parent’s rules.
+                               Tell your parent about places or people that make you feel unsafe.
+                               Have a secret code word for emergencies. If you phone your parent while you’re with someone who scares you, you can say the code word to secretly let your parent know that you need help.
+                              </p>
+                          <!-- <a href="javascript:void(0);" class="btn btn-primary waves-effect waves-light">Button</a> -->
+                        </div>
+                    </div>
+                </div> <!-- end col-->
+
+              </div> 
+                <!-- end page title -->
+              
+                <!-- end row-->
+
+                <!-- end row -->
+
+                <!-- end row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- content -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+</div>
+<!-- END wrapper -->
+
+<!-- Right bar overlay-->
+<!-- Vendor js -->
+<script src="../../assets/ubold/layouts/light/assets/js/vendor.min.js"></script>
+<!-- Plugins js-->
+<script src="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.js"></script>
+<script src="../../assets/ubold/layouts/light/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+<script src="../../assets/ubold/layouts/light/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.js"></script>
+<script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.time.js"></script>
+<script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.tooltip.min.js"></script>
+<script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.selection.js"></script>
+<script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.crosshair.js"></script>
+<!-- Dashboar 1 init js-->
+<script src="../../assets/ubold/layouts/light/assets/js/pages/dashboard-1.init.js"></script>
+<!-- App js-->
+<script src="../../assets/ubold/layouts/light/assets/js/app.min.js"></script>
+<!-- </body> -->
+<!-- </ion-content> -->

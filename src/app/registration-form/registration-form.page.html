@@ -1,0 +1,239 @@
+    <!-- <body> -->
+    <link rel="shortcut icon" href="../../assets/ubold/layouts/light/assets/images/favicon.ico">
+
+    <link href="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../../assets/ubold/layouts/light/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/ubold/layouts/light/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/ubold/layouts/light/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+        .showright {
+            right: 0px;
+        }
+    </style>
+    <!-- Begin page -->
+    <div style="overflow: scroll !important;" id="wrapper">
+        
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <div (click)="hideleft()" class="content">
+                <!-- Start Content-->
+                <div class="container-fluid">
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Basic Details</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+
+<form [formGroup]="registration_form" (ngSubmit)="register(registration_form.value)">
+
+                                                <div class="form-group mb-3">
+                                                    <label for="simpleinput">Name</label>
+                                                    <ion-input formControlName="name" type="text" id="simpleinput" class="form-control" placeholder="Enter Your Name" required></ion-input>
+    <ng-container *ngFor="let validation of validation_messages.name">
+        <div class="error-message" *ngIf="registration_form.get('name').hasError(validation.type) && (registration_form.get('name').dirty || registration_form.get('name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-disable">Email</label>
+                                                    <ion-input formControlName="email" type="text" class="form-control" id="example-disable" disabled="" value={{user_mail}}></ion-input>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-number">Mobile Number</label>
+                                                    <ion-input formControlName="mobile_number" class="form-control" id="example-number" type="tel" name="number" placeholder="Enter Mobile Number" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.mobile_number">
+        <div class="error-message" *ngIf="registration_form.get('mobile_number').hasError(validation.type) && (registration_form.get('mobile_number').dirty || registration_form.get('mobile_number').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-textarea">Current Address</label>
+                                                    <textarea formControlName="current_address" class="form-control" id="example-textarea" rows="5" placeholder="Enter Address" required></textarea>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-date">Date of Birth</label>
+                                                    <ion-input formControlName="date_of_birth" class="form-control" id="example-date" type="date" name="date" required></ion-input>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-date">Gender</label>
+                                                    <div class="custom-control custom-radio">
+                                                            <div class="radio radio-info form-check-inline">
+                                                    <input id="male" type="radio" value="male" name="gender" formControlName="gender" required>
+                                                    <label for="inlineRadio1"> Male </label>
+                                                </div>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <div class="radio radio-info form-check-inline">
+                                                    <input id="female" type="radio" value="female" name="gender" formControlName="gender" required>
+                                                    <label for="inlineRadio2"> Female </label>
+                                                </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="simpleinput">Occupation</label>
+                                                    <ion-input formControlName="occupation" type="text" id="simpleinput" class="form-control" placeholder="Enter Occupation" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.occupation">
+        <div class="error-message" *ngIf="registration_form.get('occupation').hasError(validation.type) && (registration_form.get('occupation').dirty || registration_form.get('occupation').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                </div>
+
+                                                <div>
+                                                    <label for="example-disable">Father Details</label>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="simpleinput">Name</label>
+                                                    <ion-input formControlName="father_name" type="text" id="simpleinput" class="form-control" placeholder="Enter Name" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.father_name">
+        <div class="error-message" *ngIf="registration_form.get('father_name').hasError(validation.type) && (registration_form.get('father_name').dirty || registration_form.get('father_name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-number">Mobile Number</label>
+                                                    <ion-input formControlName="father_mobile_number" class="form-control" id="example-number" type="text" name="number"placeholder="Enter Mobile Number" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.father_mobile_number">
+        <div class="error-message" *ngIf="registration_form.get('father_mobile_number').hasError(validation.type) && (registration_form.get('father_mobile_number').dirty || registration_form.get('father_mobile_number').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <ion-input formControlName="father_email_address" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.father_email_address">
+        <div class="error-message" *ngIf="registration_form.get('father_email_address').hasError(validation.type) && (registration_form.get('father_email_address').dirty || registration_form.get('father_email_address').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-textarea">Current Address</label>
+                                                    <textarea formControlName="father_current_address" class="form-control" id="example-textarea" rows="5" placeholder="Enter Address" required></textarea>
+                                                </div>
+
+                                                <div>
+                                                    <label for="example-disable">Guardian Details</label>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="simpleinput">Name</label>
+                                                    <ion-input formControlName="guardian_name" type="text" id="simpleinput" class="form-control" placeholder="Enter Name" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.guardian_name">
+        <div class="error-message" *ngIf="registration_form.get('guardian_name').hasError(validation.type) && (registration_form.get('guardian_name').dirty || registration_form.get('guardian_name').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-number">Mobile Number</label>
+                                                    <ion-input formControlName="guardian_mobile_number" class="form-control" id="example-number" type="tel" name="number" placeholder="Enter Mobile Number" required></ion-input>
+                                                       <ng-container *ngFor="let validation of validation_messages.guardian_mobile_number">
+        <div class="error-message" *ngIf="registration_form.get('guardian_mobile_number').hasError(validation.type) && (registration_form.get('guardian_mobile_number').dirty || registration_form.get('guardian_mobile_number').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <ion-input formControlName="guardian_email_address" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" required></ion-input>
+                                                    <ng-container *ngFor="let validation of validation_messages.guardian_email_address">
+        <div class="error-message" *ngIf="registration_form.get('guardian_email_address').hasError(validation.type) && (registration_form.get('guardian_email_address').dirty || registration_form.get('guardian_email_address').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+                                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label for="example-textarea">Current Address</label>
+                                                    <textarea formControlName="guardian_current_address" class="form-control" id="example-textarea" rows="5" required="required" required></textarea>
+                                                </div>
+
+                                                <!-- <div class="form-group mb-3">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="checkmeout0" required>
+                                                        <label class="custom-control-label" for="checkmeout0">Email preffff</label>
+                                                    </div>
+                                                </div> -->
+
+                                                <button class="btn btn-primary waves-effect waves-light" type="submit" [disabled]="!registration_form.valid">Register</button>
+</form>
+                                           <!--  <button (click)="registration()">helloo</button> -->
+                                        </div>
+                                        <!-- end col -->
+                                    </div>
+                                    <!-- end row-->
+
+                                </div>
+                                <!-- end card-body -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+            </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right bar overlay-->
+    <!-- Vendor js -->
+    <script src="../../assets/ubold/layouts/light/assets/js/vendor.min.js"></script>
+    <!-- Plugins js-->
+    <script src="../../assets/ubold/layouts/light/assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/jquery-knob/jquery.knob.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.time.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.tooltip.min.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.selection.js"></script>
+    <script src="../../assets/ubold/layouts/light/assets/libs/flot-charts/jquery.flot.crosshair.js"></script>
+    <!-- Dashboar 1 init js-->
+    <script src="../../assets/ubold/layouts/light/assets/js/pages/dashboard-1.init.js"></script>
+    <!-- App js-->
+    <script src="../../assets/ubold/layouts/light/assets/js/app.min.js"></script>
+    <!-- </body> -->
