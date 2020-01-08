@@ -117,16 +117,11 @@ profile_url:string;
     this.navCtrl.navigateForward('/my-profile');
   }
   logout() {
-    console.log('logout')
     this.authService.logoutUser()
     .then(res => {
-      console.log(res);
       localStorage.removeItem('uid');
       localStorage.removeItem('profile_url');
       this.navCtrl.navigateBack('');
-    })
-    .catch(error => {
-      console.log(error);
     })
   }
   

@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
           }
           else{
             this.spinner.hide();
-            this.errorMessage = "Your Email not verified yet";
+            this.errorMessage = "Your Email not verified, didn't receive the email yet? Check your Promotions too...";
           }
         });
       }
@@ -75,7 +75,7 @@ export class LoginPage implements OnInit {
           localStorage.setItem('profile_url',res1.val().img_url);
           this.profile_url=res1.val().img_url;
         }
-        console.log('logged in successfully with user details:', res);
+
         localStorage.setItem("uid",res.user.uid);
         this.errorMessage = "";
         this.afAuth.authState.subscribe(user => {
@@ -87,7 +87,7 @@ export class LoginPage implements OnInit {
               this.navCtrl.navigateForward('/registration-form');        
             }
           }else{
-            this.errorMessage = "Your Email not verified yet";
+            this.errorMessage = "Your Email not verified, didn't receive the email yet? Check your Promotions too...";
           }
         })
       });

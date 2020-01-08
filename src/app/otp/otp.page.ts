@@ -40,8 +40,6 @@ export class OtpPage implements OnInit {
     var ref= firebase.database().ref('users/'+key);
     ref.once('value',res=>{
         var opt=res.val().opt;
-        // console.log("send opt",opt);
-        // console.log('otp entered is ', value.otp);
         if(opt==value.otp){
           document.getElementById('content').innerHTML=`<img src='../assets/icon/verified.png'><div class="form-group mb-0 text-center">                                           
           <label class="error-message">Your number verified Successfully</label></div>`;
@@ -132,16 +130,11 @@ export class OtpPage implements OnInit {
   }
 
  logout() {
-    console.log('logout')
     this.authService.logoutUser()
     .then(res => {
-      console.log(res);
       localStorage.removeItem('uid');
       localStorage.removeItem('profile_url');
       this.navCtrl.navigateBack('');
-    })
-    .catch(error => {
-      console.log(error);
     })
   }
 }

@@ -57,9 +57,7 @@ export class detailsservice {
       }
       //var msg="DO+NOT%2CSHARE:"+opt+"%2Cis%2Cyour%2CVerification%2Ccode";
       var msg='Hi%2C+this+is+your+otp+'+opt;
-      console.log('momomo', res.val().mobile_number);
       this.http.get('http://instantalerts.co/api/web/send?apikey=632s328863w07io97z6794u48cd1i031&sender=SEDEMO&to=91'+res.val().mobile_number+'&message='+msg).toPromise().then(res=> {
-        console.log('eeee', res)
       })
       var smsurl='http://instantalerts.co/api/web/send?apikey=632s328863w07io97z6794u48cd1i031&sender=SEDEMO&to=91'+res.val().mobile_number+'&message='+msg;
        this.sendopt(obj,smsurl);
@@ -68,7 +66,6 @@ export class detailsservice {
   
 
   sendopt(obj,sms){
-    console.log(sms);
     
     return new Promise<any>((resolve,reject)=>{
       var key = localStorage.getItem('uid');

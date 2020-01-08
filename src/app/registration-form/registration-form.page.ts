@@ -148,7 +148,6 @@ export class RegistrationFormPage implements OnInit {
     //   });
     // });
     this.afAuth.authState.subscribe(user => {
-      console.log(user.email);
       this.user_mail=user.email;
     });
     var isMobile = {
@@ -236,7 +235,6 @@ export class RegistrationFormPage implements OnInit {
   //       Validators.required
   //     ])),
   //   });
-  //   console.log(this.registration_form)
     this.registration_form = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
         Validators.required,
@@ -281,48 +279,20 @@ export class RegistrationFormPage implements OnInit {
        guardian_current_address: [''],
       gender: ['']
     });
-    console.log(this.registration_form)
   }
 
-
-//   showright(){
-//     document.getElementById('rightbar').style.right='0px';
-// }
-
-// showleft(){
-//   if(document.getElementById('reg_leftbar').style.left=="-270px"){
-//     document.getElementById('reg_leftbar').style.left="0px";
-//   }else{
-//     document.getElementById('reg_leftbar').style.left="-270px";
-//   }
-// }
-
-// hideleft(){
-//   if(document.getElementById('reg_leftbar').style.left=="0px"){
-//     document.getElementById('reg_leftbar').style.left="-270px";
-//   }
-
-//   // if(document.getElementById('rightbar').style.right=="0px"){
-//   //   document.getElementById('rightbar').style.right="-270px";
-//   // }
-// }
-
 gender(value) {
-  console.log('genderrr', value)
+
 }
 
   register (formValues) {
-    console.log('akjsgs',formValues)
-    console.log(this.registration_form.value);
     this.aptservice.createBooking(this.registration_form.value).then(res=>{
       localStorage.setItem('registrationDone', 'yes');
-      console.log(res);
       this.registration_form.reset();
       this.router.navigate(['/dashboard']);
-    }).catch(error=> console.log(error));
+    })
     }
      registration(){
-    console.log(this.registration_form);
   }
   opt(){
     this.aptservice.getnumber();
@@ -346,16 +316,11 @@ gender(value) {
     this.navCtrl.navigateForward('/my-profile');
   }
   logout() {
-    console.log('logout')
     this.authService.logoutUser()
     .then(res => {
-      console.log(res);
       localStorage.removeItem('uid');
       localStorage.removeItem('profile_url');
       this.navCtrl.navigateBack('');
-    })
-    .catch(error => {
-      console.log(error);
     })
   }
   

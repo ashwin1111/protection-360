@@ -26,7 +26,6 @@ export class GetAppointmentPage implements OnInit {
   }
   fetchBookings() {
     this.aptService.getBookingList().valueChanges().subscribe(res => {
-      console.log(res)
     })
   }
 

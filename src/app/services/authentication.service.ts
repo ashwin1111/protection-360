@@ -29,7 +29,6 @@ export class AuthenticateService {
       if(firebase.auth().currentUser){
         firebase.auth().signOut()
         .then(() => {
-          console.log("Logged Out");
           resolve();
         }).catch((error) => {
           reject();

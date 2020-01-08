@@ -77,16 +77,6 @@ export class ChatIvrPage implements OnInit {
     this.validations_form = this.formBuilder.group({
       num: ['']
     });
-
-    // this.http.get('http://quotes-node-api-postgres.herokuapp.com/api/ivr/get_all_first').toPromise().then(res=> {
-    //   console.log('received serv', res)
-    //   var resultArray = Object.keys(res).map(function(obj){
-    //     let person = res[obj].description;
-    //     return person;
-    // });
-    // this.msg.push(resultArray)
-    // console.log('this.sendedMessage', this.sendedMessage)
-    // })
     
     var isMobile = {
       Android: function() {
@@ -171,16 +161,13 @@ export class ChatIvrPage implements OnInit {
     this.navCtrl.navigateForward('/my-profile');
   }
   logout() {
-    console.log('logout')
     this.authService.logoutUser()
     .then(res => {
-      console.log(res);
       localStorage.removeItem('uid');
       localStorage.removeItem('profile_url');
       this.navCtrl.navigateBack('');
     })
     .catch(error => {
-      console.log(error);
     })
   }
   

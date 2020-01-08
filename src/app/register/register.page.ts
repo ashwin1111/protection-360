@@ -53,9 +53,8 @@ export class RegisterPage implements OnInit {
      .then(res => {
       this.SendVerificationMail();
        this.errorMessage = "";
-       this.successMessage = "Your account has been created. Please log in.";
+       this.successMessage = "Your account has been created. Please verify your email.";
      }, err => {
-       console.log(err);
        this.errorMessage = err.message;
        this.successMessage = "";
      })
@@ -63,13 +62,9 @@ export class RegisterPage implements OnInit {
 
   SendVerificationMail() {
     this.afAuth.authState.subscribe(user => {
-      // console.log(user);
       user.sendEmailVerification()
       .then(() => {
-        console.log('email sent');
         this.router.navigate(['']);
-      }, err => {
-        console.log('verify email failed', err)
       })
     });
   }

@@ -43,7 +43,6 @@ public profile_url:string;
       var key = localStorage.getItem('uid');
       var ref= firebase.database().ref('users/'+key);
       ref.once('value',res=>{
-        console.log("eewg");
         this.user_name=res.val().name;
           if(res.val().numberverfied==1){
             document.getElementById('phoneverify').remove();
@@ -85,7 +84,6 @@ public profile_url:string;
     var dref= firebase.database().ref('question');
     dref.once('value',res=>{
        res.forEach(snapshot=>{
-          console.log(snapshot.val());
           document.getElementById('post').innerHTML+=`<div id="`+snapshot.key+`" class="border border-light p-3 mb-3"><div class="media">
 <img class="mr-2 avatar-sm rounded-circle" src="`+snapshot.val().profile_url+`" alt="Generic placeholder image"><div class="media-body"><h5 class="m-0">`+snapshot.val().name+`</h5>
 <p class="text-muted"><small>about 1 hour ago</small></p></div></div> <div class="font-16 text-center font-italic text-dark">
@@ -109,14 +107,12 @@ public profile_url:string;
 </a> <div class="media-body"><input style="border:1px solid #ced4da !important;" type="text"  id="`+snapshot.key+`simpleinput" class="form-control border-0 form-control-sm" placeholder="Add comment"><br>
 <button (click)="alerts()" data-name="`+this.user_name+`" data-src="`+this.profile_url+`" id="`+snapshot.key+`post"  class="btn btn-sm btn-dark waves-effect waves-light">Post</button>
 </div></div>`;
-console.log("reply",snapshot.key);
 document.getElementById(snapshot.key).insertAdjacentHTML("beforeend",inner);
 document.getElementById(snapshot.key+"post").addEventListener("click", (event)=>this.reply(snapshot.key));
 });  
 }
 else
 {
-  console.log("not reply",snapshot.key);
 var inner1=`<div id="`+snapshot.key+`comment" class="post-user-comment-box">`;
 inner1=inner1+`<div id="`+snapshot.key+`box" class="media mt-2">
 <a class="pr-2" ><img  src="`+this.profile_url+`" class="rounded-circle" alt="Generic placeholder image" height="31">
@@ -131,20 +127,14 @@ document.getElementById(snapshot.key+"post").addEventListener("click", (event)=>
     });
   }
  logout() {
-    console.log('logout')
     this.authService.logoutUser()
     .then(res => {
-      console.log(res);
       localStorage.removeItem('uid');
       localStorage.removeItem('profile_url');
       this.navCtrl.navigateBack('');
     })
-    .catch(error => {
-      console.log(error);
-    })
   }
 alerts(){
-alert("fds");
 }
   showleft(){
     if(document.getElementById('neighbour_leftbar').style.left=="-270px"){
@@ -166,7 +156,6 @@ reply(key){
     name:this.user_name,
     reply:(<HTMLInputElement>document.getElementById(key+'simpleinput')).value
   }
-  console.log(info);
  this.aptservice.reply(info,key);
  document.getElementById(key+'box').remove();
  document.getElementById(key+'comment').insertAdjacentHTML("beforeend",`<div class="media"><img class="mr-2 avatar-sm rounded-circle" src="`+this.profile_url+`" alt="Generic placeholder image">
@@ -208,7 +197,7 @@ question(){
     profile_url:this.profile_url,
     question:(<HTMLInputElement>document.getElementById('question')).value
   }
-  console.log(obj);
+
   this.aptservice.qus(obj);
   this.addpost();
   (<HTMLInputElement>document.getElementById('question')).value='';

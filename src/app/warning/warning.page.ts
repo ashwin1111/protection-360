@@ -62,7 +62,6 @@ export class WarningPage implements OnInit {
       else{
         this.profile_url="../../assets/ubold/layouts/light/assets/images/man.png";
       }
-      console.log('profile_url',this.profile_url)
     }
   }
   
@@ -117,7 +116,6 @@ export class WarningPage implements OnInit {
   }
   checkSMSPermission() {
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.SEND_SMS).then(
-      result => console.log('Has permission?', result.hasPermission),
       err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.SEND_SMS)
     );
   }
@@ -167,16 +165,11 @@ blog(){
 }
 
 logout() {
-  console.log('logout')
   this.authService.logoutUser()
   .then(res => {
-    console.log(res);
     localStorage.removeItem('uid');
     localStorage.removeItem('profile_url');
     this.navCtrl.navigateBack('');
-  })
-  .catch(error => {
-    console.log(error);
   })
 }
 
@@ -217,7 +210,6 @@ goToProlfilePage() {
   let lonDMS = this.getDMS(this.geoLongitude, 'long');
   
   this.http.get('https://pickle-dilophosaurus.glitch.me/send?map=https://www.google.com/maps/place/' + latDMS + ',' + lonDMS + '&name='+'USER'+'&Present_Latitude='+this.geoLatitude+'&Present_geoLongitude='+this.geoLongitude+'&Adress='+this.geoAddress).toPromise().then(res=>{
-    console.log("sent");
   });
   var key = localStorage.getItem('uid');
   var ref= firebase.database().ref('users/'+key);
@@ -225,9 +217,9 @@ goToProlfilePage() {
     var parentnumber=res.val().father_mobile_number;
     this.sms.send(parentnumber, 'https://www.google.com/maps/@' + this.geoLatitude + ',' + this.geoLongitude + ',17z',options)
     .then(()=>{
-      console.log("success");
+
     },()=>{
-    console.log("failed");
+
     }); 
   });
   
@@ -238,8 +230,6 @@ goToProlfilePage() {
       this.geolocation.getCurrentPosition().then((resp) => {
         this.geoLatitude = resp.coords.latitude;
         this.geoLongitude = resp.coords.longitude; 
-       console.log(this.geoLatitude,this.geoLongitude);
-    //  console.log("getgei"+this.geoLatitude);
        this.watchLocation();
         var obj={
           lat:resp.coords.latitude,
@@ -247,21 +237,20 @@ goToProlfilePage() {
         }
         this.aptservice.uploadgeo(obj).then(res=>{
           this.send();
-        }).catch(error=> console.log(error));
+        })
         this.geoAccuracy = resp.coords.accuracy; 
         this.getGeoencoder(this.geoLatitude,this.geoLongitude);
        }).catch((error) => {
-         console.log('Error getting location'+ JSON.stringify(error));
        });
     }
-    //geocoder method to fetch address from coordinates passed as arguments
+
     getGeoencoder(latitude,longitude){
       this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
       .then((result: NativeGeocoderResult[]) => {
         this.geoAddress = this.generateAddress(result[0]);
       })
       .catch((error: any) => {
-        console.log('Error getting location'+ JSON.stringify(error));
+
       });
     }
   
@@ -292,14 +281,9 @@ goToProlfilePage() {
         this.changed_geoLatitude = resp.coords.latitude;
         this.changed_geoLongitude = resp.coords.longitude; 
         this.getGeoencoder(this.changed_geoLatitude,this.changed_geoLongitude);
-      //   this.changed_geoLatitude = 11.0204299;
-      // this.changed_geoLongitude = 77.0095472;
-      // console.log(this.geoLatitude);
-      // console.log(this.geoLongitude);
 
         latDiff = this.Deg2Rad(this.changed_geoLatitude-this.geoLatitude);
         lonDiff = this.Deg2Rad(this.changed_geoLongitude-this.geoLongitude);
-        // console.log("diff "+latDiff+"long"+lonDiff);
         var R = 6371; // k.metres
         var φ1 = this.Deg2Rad(this.geoLatitude);
         var φ2 = this.Deg2Rad(this.changed_geoLatitude);
@@ -312,37 +296,24 @@ goToProlfilePage() {
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
         var d = R * c;
-        //console.log('d: ' + d);
 
         var dist = Math.acos( Math.sin(φ1)*Math.sin(φ2) + Math.cos(φ1)*Math.cos(φ2) * Math.cos(Δλ) ) * R;
-        //console.log('dist: ' + dist);
 
         if(dist > 2){
-          
-          // console.log("beforelat"+this.geoLatitude);
-          // console.log("beforelong"+this.geoLongitude);
-          // console.log("after"+this.changed_geoLatitude);
-          // console.log("afterlong"+this.changed_geoLongitude);
           this.geoLatitude=this.changed_geoLatitude;
           this.geoLongitude=this.changed_geoLongitude;
 
-          // console.log("swaplat"+this.geoLatitude);
-          // console.log("swaplong"+this.geoLongitude);
-          // console.log(dist);
           var obj={
             lat:this.geoLatitude,
             long:this.geoLongitude
           }
           this.aptservice.uploadgeo(obj).then(res=>{
-            //console.log('wtu');
             this.send();
-          }).catch(error=> console.log(error));
-        }else{
-          console.log("current"+dist);
+          })
         }
       });
     }
-  
+
     //Stop location update watch
     stopLocationWatch(){
       this.isWatching = false;

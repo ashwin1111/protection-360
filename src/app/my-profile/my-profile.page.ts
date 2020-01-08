@@ -153,20 +153,18 @@ export class MyProfilePage implements OnInit {
       
         // For Uploading Image To Firebase
         const fileraw = event.target.files[0];
-        console.log(fileraw)
         const filePath = '/Image/ '+ fileraw.name+ '-'+(Math.floor(1000 + Math.random() * 9000) + 1);
         const result = this.SaveImageRef(filePath, fileraw);
         const ref = result.ref;
         result.task.then(a => {
           ref.getDownloadURL().subscribe(a => {
-            console.log(a);
             var obj={
               img_url:a
             }
             localStorage.setItem('profile_url',a);
             this.profile_url=a;
             this.aptservice.uploadprofile(obj).then(res=>{
-            }).catch(error=> console.log(error));
+            });
           });
         });
       }, error => {
@@ -185,16 +183,11 @@ export class MyProfilePage implements OnInit {
   }
 
   logout() {
-    console.log('logout')
     this.authService.logoutUser()
     .then(res => {
-      console.log(res);
       localStorage.removeItem('uid');
       localStorage.removeItem('profile_url');
       this.navCtrl.navigateBack('');
-    })
-    .catch(error => {
-      console.log(error);
     })
   }
   opt(){

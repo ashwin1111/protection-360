@@ -29,11 +29,9 @@ export class MakeAppointmentPage implements OnInit {
       return false;
     } else {
       this.aptService.createBooking(this.bookingForm.value).then(res => {
-        console.log(res)
         this.bookingForm.reset();
         this.router.navigate(['/dashboard']);
-      })
-        .catch(error => console.log(error));
+      });
     }
   }
 }
