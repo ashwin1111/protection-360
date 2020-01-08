@@ -9,24 +9,24 @@ import { AppointmentService } from './../shared/appointment.service';
   styleUrls: ['./get-appointment.page.scss'],
 })
 export class GetAppointmentPage implements OnInit {
-  Bookings = [];  
+  Bookings = [];
   constructor( private aptService: AppointmentService) { }
 
   ngOnInit() {
     this.fetchBookings();
-    let bookingRes = this.aptService.getBookingList();
+    const bookingRes = this.aptService.getBookingList();
     bookingRes.snapshotChanges().subscribe(res => {
       this.Bookings = [];
       res.forEach(item => {
-        let a = item.payload.toJSON();
-        a['$key'] = item.key;
+        const a = item.payload.toJSON();
+        a.$key = item.key;
         this.Bookings.push(a as Appointment);
-      })
-    })
+      });
+    });
   }
   fetchBookings() {
     this.aptService.getBookingList().valueChanges().subscribe(res => {
-    })
+    });
   }
 
 }

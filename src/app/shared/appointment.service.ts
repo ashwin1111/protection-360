@@ -17,23 +17,23 @@ export class AppointmentService {
 
   // Create
   createBooking(app) {
-    let appointment = new Appointment(app.name,app.email,app.mobile);
+    const appointment = new Appointment(app.name, app.email, app.mobile);
     return  new Promise<any>((resolve, reject) => {
       this.bookingListRef.push({
-        name:app.name,
-        email:app.email,
-        mobile:app.mobile
+        name: app.name,
+        email: app.email,
+        mobile: app.mobile
       }) .then(
         res => resolve(res),
-        err => reject(err))
-    })
+        err => reject(err));
+    });
   }
 
   getBookingList() {
     this.bookingListRef = this.db.list('/users');
     return this.bookingListRef;
   }
-  
+
   }
 
   // Get Single
@@ -43,7 +43,7 @@ export class AppointmentService {
   // }
 
   // Get List
-  
+
 
   // Update
   // updateBooking(id, apt: Appointment) {
@@ -52,7 +52,7 @@ export class AppointmentService {
   //     email: apt.email,
   //     mobile: apt.mobile
   //   })
-  //}
+  // }
 
   // Delete
   // deleteBooking(id: string) {

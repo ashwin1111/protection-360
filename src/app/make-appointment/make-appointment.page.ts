@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { AppointmentService } from './../shared/appointment.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class MakeAppointmentPage implements OnInit {
       name: [''],
       email: [''],
       mobile: ['']
-    })
+    });
   }
 
    formSubmit() {

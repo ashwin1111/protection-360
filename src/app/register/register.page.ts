@@ -2,26 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
 import { NavController } from '@ionic/angular';
-import { AngularFireAuth } from "@angular/fire/auth";
-import { Router } from "@angular/router";
- 
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
 
-export class RegisterPage implements OnInit { 
+export class RegisterPage implements OnInit {
   validations_form: FormGroup;
-  errorMessage: string = '';
-  successMessage: string = '';
+  errorMessage = '';
+  successMessage = '';
 
   validation_messages = {
-   'email': [
+   email: [
      { type: 'required', message: 'Email is required.' },
      { type: 'pattern', message: 'Enter a valid email.' }
    ],
-   'password': [
+   password: [
      { type: 'required', message: 'Password is required.' },
      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
    ]
@@ -48,16 +48,16 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  tryRegister (value){
+  tryRegister(value) {
     this.authService.registerUser(value)
      .then(res => {
       this.SendVerificationMail();
-       this.errorMessage = "";
-       this.successMessage = "Your account has been created. Please verify your email.";
+      this.errorMessage = '';
+      this.successMessage = 'Your account has been created. Please verify your email.';
      }, err => {
        this.errorMessage = err.message;
-       this.successMessage = "";
-     })
+       this.successMessage = '';
+     });
   }
 
   SendVerificationMail() {
@@ -65,11 +65,11 @@ export class RegisterPage implements OnInit {
       user.sendEmailVerification()
       .then(() => {
         this.router.navigate(['']);
-      })
+      });
     });
   }
 
   goLoginPage() {
     this.navCtrl.navigateBack('');
-  } 
+  }
 }

@@ -3,7 +3,7 @@ import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { detailsservice } from '../shared/details.service';
-import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 
 
@@ -21,79 +21,78 @@ export interface Image {
 
 
 export class DashboardPage implements OnInit {
- 
+
   url: any;
-  loading: boolean = false;
-   user_name:string;
+  loading = false;
+   user_name: string;
   newImage: Image = {
     id: localStorage.getItem('uid'), image: ''
-  }
+  };
   userEmail: string;
-  profile_url:string;
-  count:number;
+  profile_url: string;
+  count: number;
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private storage: AngularFireStorage,
-    private aptservice:detailsservice,
+    private aptservice: detailsservice,
     public afAuth: AngularFireAuth
   ) {
     if (!localStorage.getItem('uid')) {
       this.navCtrl.navigateForward('');
-    }else{
-      if(localStorage.getItem('profile_url')){
-        this.profile_url=localStorage.getItem('profile_url');
-      }
-      else{
-        this.profile_url="../../assets/ubold/layouts/light/assets/images/man.png";
+    } else {
+      if (localStorage.getItem('profile_url')) {
+        this.profile_url = localStorage.getItem('profile_url');
+      } else {
+        this.profile_url = '../../assets/ubold/layouts/light/assets/images/man.png';
       }
     }
   }
- 
+
   ngOnInit() {
-    this.count=3;
+    this.count = 3;
     this.afAuth.authState.subscribe(user => {
-      if(user.emailVerified){
+      if (user.emailVerified) {
           document.getElementById('emailverify').remove();
-          this.count=this.count-1;
+          this.count = this.count - 1;
       }
-      var key = localStorage.getItem('uid');
-      var ref= firebase.database().ref('users/'+key);
-      ref.once('value',res=>{
-        this.user_name=res.val().name;
-          if(res.val().numberverfied==1){
+      let key = localStorage.getItem('uid');
+      let ref = firebase.database().ref('users/' + key);
+      ref.once('value', res => {
+        this.user_name = res.val().name;
+        if (res.val().numberverfied == 1) {
             document.getElementById('phoneverify').remove();
-            this.count=this.count-1;
+            this.count = this.count - 1;
           }
       });
     });
-    var isMobile = {
-      Android: function() {
+    let isMobile = {
+      Android() {
           return navigator.userAgent.match(/Android/i);
       },
-      BlackBerry: function() {
+      BlackBerry() {
           return navigator.userAgent.match(/BlackBerry/i);
       },
-      iOS: function() {
+      iOS() {
           return navigator.userAgent.match(/iPhone|iPad|iPod/i);
       },
-      Opera: function() {
+      Opera() {
           return navigator.userAgent.match(/Opera Mini/i);
       },
-      Windows: function() {
+      Windows() {
           return navigator.userAgent.match(/IEMobile/i);
       },
-      any: function() {
+      any() {
           return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
       }
   };
-    if( isMobile.any() ){
-      document.getElementById('leftbar').style.left="-270px";
-    }else{
-      document.getElementById('leftbar').style.left="0px";
+    if ( isMobile.any() ) {
+      document.getElementById('leftbar').style.left = '-270px';
+    } else {
+      document.getElementById('leftbar').style.left = '0px';
     }
   }
- 
+
   logout() {
     this.authService.logoutUser()
     .then(res => {
@@ -102,39 +101,39 @@ export class DashboardPage implements OnInit {
       this.navCtrl.navigateBack('');
     })
     .catch(error => {
-    })
+    });
   }
 
-  home(){
+  home() {
     this.navCtrl.navigateForward('/dashboard');
   }
-  askhelp(){
+  askhelp() {
     this.navCtrl.navigateForward('/neighbour');
   }
-  chatbot(){
+  chatbot() {
     this.navCtrl.navigateForward('/chat-ivr');
   }
-  blog(){
+  blog() {
     this.navCtrl.navigateForward('/safety-measures');
   }
 
-  showright(){
-      document.getElementById('rightbar').style.right='0px';
+  showright() {
+      document.getElementById('rightbar').style.right = '0px';
   }
-  redirect_warning(){
+  redirect_warning() {
     this.navCtrl.navigateForward('/warning');
   }
-  showleft(){
-    if(document.getElementById('leftbar').style.left=="-270px"){
-      document.getElementById('leftbar').style.left="0px";
-    }else{
-      document.getElementById('leftbar').style.left="-270px";
+  showleft() {
+    if (document.getElementById('leftbar').style.left == '-270px') {
+      document.getElementById('leftbar').style.left = '0px';
+    } else {
+      document.getElementById('leftbar').style.left = '-270px';
     }
   }
 
-  hideleft(){
-    if(document.getElementById('leftbar').style.left=="0px"){
-      document.getElementById('leftbar').style.left="-270px";
+  hideleft() {
+    if (document.getElementById('leftbar').style.left == '0px') {
+      document.getElementById('leftbar').style.left = '-270px';
     }
 
     // if(document.getElementById('rightbar').style.right=="0px"){
@@ -149,35 +148,35 @@ export class DashboardPage implements OnInit {
   navigateToWarning() {
     this.navCtrl.navigateForward('/warning');
   }
-  upload(event){
+  upload(event) {
     this.loading = true;
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-     
+      let reader = new FileReader();
+
       reader.readAsDataURL(event.target.files[0]);
       // For Preview Of Image
-      reader.onload = (e:any) => { // called once readAsDataURL is completed
+      reader.onload = (e: any) => { // called once readAsDataURL is completed
         this.url = e.target.result;
-      
+
         // For Uploading Image To Firebase
         const fileraw = event.target.files[0];
-        const filePath = '/Image/ '+ fileraw.name+ '-'+(Math.floor(1000 + Math.random() * 9000) + 1);
+        const filePath = '/Image/ ' + fileraw.name + '-' + (Math.floor(1000 + Math.random() * 9000) + 1);
         const result = this.SaveImageRef(filePath, fileraw);
         const ref = result.ref;
         result.task.then(a => {
           ref.getDownloadURL().subscribe(a => {
-            var obj={
-              img_url:a
-            }
-            localStorage.setItem('profile_url',a);
-            this.profile_url=a;
-            this.aptservice.uploadprofile(obj).then(res=>{
+            let obj = {
+              img_url: a
+            };
+            localStorage.setItem('profile_url', a);
+            this.profile_url = a;
+            this.aptservice.uploadprofile(obj).then(res => {
             });
           });
         });
       }, error => {
-        alert("Error");
-      }
+        alert('Error');
+      };
 
     }
   }
@@ -190,9 +189,9 @@ export class DashboardPage implements OnInit {
     };
   }
 
-  opt(){
+  opt() {
     this.navCtrl.navigateForward('/otp');
-    //this.aptservice.getnumber();
+    // this.aptservice.getnumber();
   }
 
   goToProlfilePage() {
